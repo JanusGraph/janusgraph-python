@@ -32,7 +32,7 @@ class RelationIdentifier(object):
 
         """
 
-        if type(other) is RelationIdentifier:
+        if isinstance(other, RelationIdentifier):
             return self.relationID == other.relationID
 
         return False

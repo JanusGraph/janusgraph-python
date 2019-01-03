@@ -16,5 +16,3 @@
 This module is used as driver for JanusGraph python client.
 It includes ClientBuilder module to connect to running JanusGraph server.
 """
-
-from .ClientBuilder import JanusGraphClient

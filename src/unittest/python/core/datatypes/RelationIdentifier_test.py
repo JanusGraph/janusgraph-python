@@ -30,4 +30,3 @@ class TestRelationIdentifier(unittest.TestCase):
 
         self.assertEqual(e1, e2)
         self.assertNotEqual(e1, e3)
-        pass

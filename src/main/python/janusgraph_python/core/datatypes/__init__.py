@@ -16,6 +16,3 @@
 This module contains various Data types not available in Python,
 but are available in JanusGraph like Geoshape, RelationIdentifier
 """
-
-from .GeoShape import GeoShape
-from .RelationIdentifier import RelationIdentifier

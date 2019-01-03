@@ -44,3 +44,8 @@ site/
 # scripts files
 src/main/scripts/*
 src/main/scripts/*.*
+
+tempENV/
+
+package-lock.json
+node_modules/*

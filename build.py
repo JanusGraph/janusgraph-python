@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from pybuilder.core import use_plugin, init, Author, task, depends
+from pybuilder.core import use_plugin, init, Author
 
 authors = [Author("Debasish Kanhar", "dekanhar@in.ibm.com")]
 description = "Python client drivers for JanusGraph"
@@ -54,7 +54,6 @@ def initialize(project):
     project.set_property("coverage_exceptions", ["__init__"])
 
     project.set_property("unittest_test_method_prefix", "test")
-    project.set_property("unittest_file_suffix", "_test")
     project.set_property("unittest_module_glob", "_test")
 
     project.set_property("sphinx_config_path", "docs/")
