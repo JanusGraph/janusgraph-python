@@ -1,0 +1,46 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/*.*
+*/__pycache__/
+*.py[cod]
+*$py.class
+
+# PyCharm / Git folders
+.idea/
+
+# Script files
+src/main/scripts/
+
+# VS Code folders
+.vscode/
+
+# Unit test / coverage reports
+.coverage
+.coverage.*
+nosetests.xml
+coverage.xml
+.pytest_cache/
+
+# Sphinx documentation
+docs/_build/
+docs/_static/
+docs/.doctrees/
+docs/janusgraph_python*.rst
+docs/modules.rst
+docs/janusgraph_python.rst
+
+# PyBuilder
+target/
+
+# pyenv
+.python-version
+
+# Environments
+.env
+
+# mkdocs documentation
+site/
+*/site/
+
+# scripts files
+src/main/scripts/*
+src/main/scripts/*.*
