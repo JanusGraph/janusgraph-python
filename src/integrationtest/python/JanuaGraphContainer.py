@@ -11,7 +11,6 @@ class JanusGraphContainer(object):
 
         self.client = docker.from_env()
         self.container = None
-        pass
 
     def start(self):
 
@@ -24,7 +23,8 @@ class JanusGraphContainer(object):
 
         return self.container
 
-    def wait_for_container_to_start(self):
+    @staticmethod
+    def wait_for_container_to_start():
         while True:
             try:
                 docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]

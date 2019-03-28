@@ -13,6 +13,6 @@
 # limitations under the License.
 
 """
-This module contains all the Serializer and Deserializer classes needed for converting between 
+This module contains all the Serializer and Deserializer classes needed for converting between
 Python and Gramlin-server responses.
 """
