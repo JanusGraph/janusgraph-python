@@ -1,0 +1,60 @@
+# Copyright 2018 JanusGraph Python Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#    http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+language: python
+
+python:
+- '3.6'
+- '3.5'
+- '3.4'
+- '3.5-dev'
+- '3.6-dev'
+- '3.7-dev'
+
+env:
+  global:
+    - ENV_NAME=tmpenv
+
+install:
+  - pip install virtualenv
+  # Create Virtual env within which all packages will be installed. Default Python version is Travis' Python version
+  - virtualenv "${ENV_NAME}"
+
+before_script:
+  # Install all pre-requisites for building library and docs
+  - bash before-script.sh "${ENV_NAME}"
+
+script:
+  - bash build-library.sh "${ENV_NAME}"
+  - bash build-docs.sh "${ENV_NAME}"
+
+after_script:
+  # Remove the virtualenv using pip
+  - pip uninstall virtualenv -y
+
+# Deployment to PyPi configuration
+# TODO: Update personal credentials for publishing to PyPi with JanusGraph user credentials.
+branches:
+  only:
+  - master
+before_deploy:
+  - cd target/dist/janusgraph_python
+deploy:
+  provider: pypi
+  user:
+  password:
+  server: https://test.pypi.org/legacy/
+  skip_cleanup: true
+  on:
+    tags: true
