@@ -35,8 +35,8 @@ class Circle(object):
             raise ValueError("Invalid Coordinates/Radius passed. "
                              "Latitude needs to be b/w [-90, 90] and Longitude b/w [-180, 180] and Radius > 0")
 
-    @staticmethod
-    def getShape():
+
+    def getShape(self):
         """ Return the Shape of Geometrical shape
 
         Returns:

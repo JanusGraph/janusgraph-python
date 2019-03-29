@@ -14,6 +14,8 @@
 
 
 import unittest
+import json
+from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
 from janusgraph_python.structure.io.GraphsonReader import JanusGraphSONReader
 
 
@@ -54,7 +56,7 @@ class Mock(object):
         if len(self.objectify()) != len(attributes):
             return False
 
-        for k, _ in attributes.items():
+        for k, v in attributes.items():
             if getattr(self, k) != getattr(other, k):
                 return False
 

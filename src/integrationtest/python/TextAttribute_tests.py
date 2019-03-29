@@ -11,6 +11,7 @@ from janusgraph_python.core.attribute.Text import Text
 class TestTextAttributes(unittest.TestCase):
     def setUp(self):
         self.container = JanusGraphContainer()
+        pass
 
     def test_text_fuzzy(self):
         self.container.start()

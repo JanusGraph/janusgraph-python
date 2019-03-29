@@ -13,6 +13,7 @@
 # limitations under the License.
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
+from ..core.datatypes.RelationIdentifier import RelationIdentifier
 
 
 class RelationIdentifierSerializer(object):

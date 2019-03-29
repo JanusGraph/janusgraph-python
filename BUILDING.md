@@ -47,23 +47,23 @@ expects few pre requisites to be installed before hand.
     
     If any of the defaults needs to be changed, the parameter needs to be specified explicitly while running the script.
     
-    - If you want to build just the documentation, without the library.
+     - If you want to build just the documentation, without the library.
         ```bash
         ./build.sh -b false
         ```
         
-    - If you want to build just the library but aren't interested in building docs.
+     - If you want to build just the library but aren't interested in building docs.
         ```bash
         ./build.sh -d false
         ```
         
-    - If you just want to build the library, and you have python interpreter installed at /usr/lib/python
+     - If you just want to build the library, and you have python interpreter installed at /usr/lib/python
         ```bash
         ./build.sh -d false -p /usr/lib/python
         ```
         
-    - And so on depending on your requirements.
+     - And so on depending on your requirements.
 
-Once done,
+Once done, 
     - You can see the built HTML files under `docs/_build/index.html` directory.
-    - You can see the build library under `target/dist/janusgraph-python/dist` directory.
+    - You can see the build library under `target/dist/janusgraph-python/dist` directory. 

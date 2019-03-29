@@ -13,6 +13,7 @@
 # limitations under the License.
 
 import unittest
+import json
 from janusgraph_python.structure.io.GraphsonReader import JanusGraphSONReader
 from janusgraph_python.core.datatypes.Point import Point
 from janusgraph_python.core.datatypes.Circle import Circle

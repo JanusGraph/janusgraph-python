@@ -21,25 +21,25 @@ Try running either of following commands on CLI, and make a note of the version 
 - python3.4 --version
 - python3.5 --version
 - python3.6 --version
-
+    
 **NOTE**: The above checks aren't needed if installing the drivers from PyPi
 
-### Building Library
+### Building Library: 
 
 You can build the library yourself to test out the functionality of library. Refer to 
 [Building docs](BUILDING.md) for documentation on how to build the library.
 
-### Installing the Library
-
-- Though Installation of library is built as a functionality of the automated build scripts provided,
-  but if needed, user can follow the bellow instructions to install the library to environment of their choice.
-
+### Installing the Library:
+    
+-   Though Installation of library is built as a functionality of the automated build scripts provided,
+    but if needed, user can follow the bellow instructions to install the library to environment of their choice.
+    
 - To install library using Pip (It is not yet hosted):
     ```bash
     # X is version number of JanusGraph Python client supported based on JanusGraph version chosen.
     pip install janusgraph_python=X
     ```
-
+    
 - To install library from tarball, once it is built:
      ```bash
      pip install target/dist/janusgraph_python/dist/janusgraph_python-X.tar.gz
@@ -50,19 +50,19 @@ You can build the library yourself to test out the functionality of library. Ref
 
 | JanusGraph Version | Client Version |
 |:------------------:|:--------------:|
-| 0.3.0              | 0.1.0          |
-| 0.3.1              | 0.1.0          |
-| 0.2.x              | Not Released   |
+|0.3.0               |0.1.0           |
+|0.3.1               |0.1.0           |
+|0.2.x               |Not Released    |
 
 The JanusGraph client follows x.y.z version number, and according to [Semantic Versioning](https://semver.org/) 
 z is patch number. Hence, if a client is build using x.y against JanusGraph a.b.c, 
 irrespective of `.z` change, the client will remain compatible.
 
 Example::
-    ```bash
+    
     Version 1.0.0 is compatible with JanusGraph 0.3.0. Meaning that 1.0.1/1.0.2/..1.0.x will all be compatible with
     JanusGraph 0.3.0
-    ```
+    
 ### Community
 
 JanusGraph-Python uses the same communication channels as JanusGraph in general. 
@@ -70,11 +70,13 @@ So, please refer to the
 [Community section in JanusGraph's main repository](https://github.com/JanusGraph/janusgraph#community) 
 for more information about these various channels.
 
+
 ### Contributing
 
 Please see 
 [`CONTRIBUTING.md` in JanusGraph's main repository](https://github.com/JanusGraph/janusgraph/blob/master/CONTRIBUTING.md) 
 for more information, including CLAs and best practices for working with GitHub.
+
 
 ### License
 

@@ -15,7 +15,7 @@
 # limitations under the License.
 
 if [ -z "${1:-}" ]; then
-  echo "Usage $(basename $0) [Env Name]"
+  echo "Usage "$(basename "$0")" [Env Name]"
   exit 1
 else
   ENV_NAME="${1}"

@@ -44,8 +44,7 @@ class JanusGraphSONWriter(object):
 
         self.serializers.update(janusSerializers)
 
-    @staticmethod
-    def __build_serializers():
+    def __build_serializers(self):
         """ The actual method which takes care of adding JanusGraph specific serializers.
         Returns:
             dict
