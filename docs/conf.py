@@ -93,7 +93,7 @@ html_theme = 'alabaster'
 html_title = "JanusGraph Python {} documentation".format(version)
 
 # A shorter title for the navigation bar.  Default is the same as html_title.
-html_short_title = "JanusGraph Py docs"
+html_short_title = "JanusGraph Python docs"
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.

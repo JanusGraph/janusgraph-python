@@ -23,7 +23,7 @@ name = "janusgraph_python"
 
 tinkerpop_version = "3.3.3"
 janusgraph_version = "0.3.0"
-version = "0.0.9"
+version = "0.1.0"
 
 use_plugin("python.core")
 # the python unittest plugin allows running python's standard library unittests
@@ -36,7 +36,7 @@ use_plugin("python.coverage")
 use_plugin("python.distutils")
 # For generating Docs from docstring using Sphinx
 use_plugin("python.sphinx")
-
+# For running integration tests
 use_plugin('python.integrationtest')
 
 default_task = ['clean', 'install_dependencies', 'prepare', 'compile_sources', 'package', 'publish']
@@ -56,9 +56,6 @@ def initialize(project):
     project.set_property("unittest_test_method_prefix", "test")
     project.set_property("unittest_file_suffix", "_test")
     project.set_property("unittest_module_glob", "_test")
-
-    # project.set_property("integrationtest_file_glob", "_test")
-    # project.set_property("integrationtest_file_suffix", "_test")
 
     project.set_property("sphinx_config_path", "docs/")
     project.set_property("sphinx_source_dir", "docs/")
