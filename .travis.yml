@@ -52,10 +52,9 @@ before_deploy:
   - cd target/dist/janusgraph_python
 deploy:
   provider: pypi
-  user: debasishdebs
+  user:
+  password:
   server: https://test.pypi.org/legacy/
   skip_cleanup: true
-  true:
-    branch: master
-  password:
-    secure: f0TQzX+wDDOT3LV76MO3ba8xLBYbcrne509HpA3w6nQKCl4OZobjC0SXG39ATAp6dq1m098FEioVB4usw9NVcc+fpeZm0jmkKq9fUvh9j0TxDC/wT0L6Rn6Cn2BnL8i/xBWkn027a4/FHFSgEqQgOycYuTcOggfyCFIbi5FflBSScjkqY6jlwXHLmIBRHgvHulkXLOOVFS5jDlI9rHqo87Ejj/A47IRttdjoz3Vt4c7ECTn+KZGsVRhvwLAraT/pRn4Hq1IuG/Xiykd2GAbCRBPeTTRkL2NCBEgjWEJSXnBRoKe+fAdI1J/sxyYd8eBx2KQLtiUkP4yPJELaAe6UoypVUvTVV3B8M8vDG3/fJlxBA3MyuOI6C2F4ilnHSdzCG/IVMBEE5lB2Jy4b60dbOxoJxU1gerfGYIo9SPNV0Q6FtCpWzjUmVfNpeEEN9pi9pPqjcaOaauk5SlMTNu0RieO2oa9lF2sK9Bfh7Uk6+DJMEDELKZytlDMHNMFwvakDwEBDSDmOxnhxkvn6lbGWx/dNXwe07nXpl/FVSVsJaGvoh8mrFMkGFTcoqHrn2nTMLKoKlbMQeCWfhTld1OfUMsolYjdk9yuowsFN8z+weXb1FpsVeXppCUZZ34nHdtX49vTkXKx0e6tJNYojsPGu4aDtz50dsXI6qfUIo7j3CGM=
+  on:
+    tags: true
