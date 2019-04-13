@@ -11,7 +11,6 @@ class JanusGraphContainer(object):
 
         self.client = docker.from_env()
         self.container = None
-        pass
 
     def start(self):
 
