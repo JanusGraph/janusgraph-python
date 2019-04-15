@@ -38,7 +38,7 @@ while getopts ":d:b:p:" opt; do
 done
 
 if [ -z "${1:-}" ]; then
-  echo "Usage "$(basename "$0")" -d [Build Docs?] -b [Build Lib?] -p [Python Executable Path]"
+  echo "Usage $(basename $0) -d [Build Docs?] -b [Build Lib?] -p [Python Executable Path]"
   echo "Building with defaults $0 -d true -b true -i false -p (default python)"
 fi
 
