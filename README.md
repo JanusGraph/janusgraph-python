@@ -5,6 +5,8 @@ JanusGraph-Python is the Python drivers for connecting to JanusGraph.
 It extends Apache TinkerPop™'s [Gremlin-Python](http://tinkerpop.apache.org/docs/current/reference/#_gremlin_python) 
 as its core dependency with additional support for JanusGraph-specific types and predicates.
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/a643a483556740c1b87ba29e160d37b6)](https://www.codacy.com/app/JanusGraph/janusgraph-python?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=JanusGraph/janusgraph-python&amp;utm_campaign=Badge_Grade)
+
 ### Pre-Requisites
 
 The library has been tested with following Python versions:
