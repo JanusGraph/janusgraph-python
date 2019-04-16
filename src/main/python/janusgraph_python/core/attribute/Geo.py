@@ -12,7 +12,6 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ..datatypes.GeoShape import GeoShape
 from gremlin_python.process.traversal import P
 
 
