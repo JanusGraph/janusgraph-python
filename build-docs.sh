@@ -26,8 +26,9 @@ case $(uname -s) in
   MINGW*)     python_path="${ENV_NAME}"/Scripts/activate;;
   *)          python_path="${ENV_NAME}"/bin/activate
 esac
-
+#
 source "${python_path}"
+#pyenv activate "${ENV_NAME}"
 
 # Auto-generate .rst files from docstrings of Python files. The .rst files are then used to generate html files
 # for API docs
@@ -42,6 +43,8 @@ rm -rf janusgraph_python*.rst
 rm -rf modules.rst
 
 cd ../
+
+#pyenv deactivate
 
 case $(uname -s) in
     MINGW*)     source deactivate;;
