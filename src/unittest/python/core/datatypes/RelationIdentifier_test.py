@@ -30,3 +30,10 @@ class TestRelationIdentifier(unittest.TestCase):
 
         self.assertEqual(e1, e2)
         self.assertNotEqual(e1, e3)
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+        pass
+>>>>>>> e41f426... Initial commit to ignore rebase
+=======
+>>>>>>> e03dba4... Applying codacy fixes
