@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from pybuilder.core import use_plugin, init, Author, task, depends
+from pybuilder.core import use_plugin, init, Author
 
 authors = [Author("Debasish Kanhar", "dekanhar@in.ibm.com")]
 description = "Python client drivers for JanusGraph"

@@ -5,7 +5,6 @@ from subprocess import Popen, PIPE
 from JanuaGraphContainer import JanusGraphContainer
 from janusgraph_python.driver.ClientBuilder import JanusGraphClient
 from gremlin_python.structure.graph import Graph
-from janusgraph_python.core.attribute.Text import Text
 
 
 class TestDocTraversals(unittest.TestCase):

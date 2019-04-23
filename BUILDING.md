@@ -26,6 +26,7 @@
       - MacOS
 
   - Building on Windows 7:
+  
     - A script build.cmd is created which accepts following keyword arguments:
 
       - `d`: Specifies whether documents to be build. Set to true or false.
@@ -77,5 +78,6 @@
     - And so on depending on your requirements.
 
 Once done,
+
   - You can see the built HTML files under `docs/_build/index.html` directory.
   - You can see the build library under `target/dist/janusgraph-python/dist` directory.
