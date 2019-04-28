@@ -13,50 +13,36 @@ class TestGeoAttributes(unittest.TestCase):
     def setUp(self):
         self.container = JanusGraphContainer()
 
-    def test_geo_contains(self):
-        self.container.start()
-
         docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
         docker_ip = docker_ip.strip().decode("utf-8")
 
-        client = JanusGraphClient()
-        client = client.connect(host=str(docker_ip), port="8182",
-                                            traversal_source="gods_traversal").get_connection()
+        self.client = JanusGraphClient()
+        self.client = self.client.connect(host=str(docker_ip), port="8182",
+                                          traversal_source="gods_traversal").get_connection()
 
-        g = Graph().traversal().withRemote(client)
+        self.container.start()
+        self.g = Graph().traversal().withRemote(self.client)
+
+    def tearDown(self) -> None:
+        self.client.close()
+        self.container.stop()
+
+    def test_geo_contains(self):
 
         # First we will need to add a property so that GeoContains can be queried.
         place = GeoShape.Circle(50, 100, 100)
-        tarturus = g.V().has("name", "tartarus").property("place", place).next()
+        self.g.V().has("name", "tartarus").property("place", place).next()
 
         truth = {GeoShape.Circle(50, 100, 10): 1, GeoShape.Circle(50, 100, 500): 0}
 
         for k, v in truth.items():
-            count = g.E().has("place", Geo.geoContains(k)).count().next()
+            count = self.g.E().has("place", Geo.geoContains(k)).count().next()
             self.assertEqual(count, v)
 
-        client.close()
-
-        self.container.stop()
-
     def test_geo_within(self):
-        self.container.start()
-
-        docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
-        docker_ip = docker_ip.strip().decode("utf-8")
-
-        client = JanusGraphClient()
-        client = client.connect(host=str(docker_ip), port="8182",
-                                traversal_source="gods_traversal").get_connection()
-
-        g = Graph().traversal().withRemote(client)
 
         truth = {GeoShape.Circle(37.97, 23.72, 50): 2, GeoShape.Circle(37.97, 23.72, 5): 0}
 
         for k, v in truth.items():
-            count = g.E().has("place", Geo.geoWithin(k)).count().next()
+            count = self.g.E().has("place", Geo.geoWithin(k)).count().next()
             self.assertEqual(count, v)
-
-        client.close()
-
-        self.container.stop()
