@@ -15,9 +15,8 @@ class TestTextAttributes(unittest.TestCase):
         docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
         docker_ip = docker_ip.strip().decode("utf-8")
 
-        self.client = JanusGraphClient()
-        self.client = self.client.connect(host=str(docker_ip), port="8182",
-                                          traversal_source="gods_traversal").get_connection()
+        self.client = JanusGraphClient().connect(host=str(docker_ip), port="8182",
+                                                 traversal_source="gods_traversal").get_connection()
 
         self.container.start()
         self.g = Graph().traversal().withRemote(self.client)
@@ -28,59 +27,59 @@ class TestTextAttributes(unittest.TestCase):
 
     def test_text_fuzzy(self):
 
-        truth = {"luves fresh breezs": 1, "shouldNotBeFound": 0}
+        mock_data = {"luves fresh breezs": 1, "shouldNotBeFound": 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.E().has("reason", Text.textFuzzy(k)).count().next()
             self.assertEqual(count, v)
 
     def test_text_prefix(self):
 
-        truth = {"s": 3, "shouldNotBeFound": 0}
+        mock_data = {"s": 3, "shouldNotBeFound": 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.V().has("name", Text.textPrefix(k)).count().next()
             self.assertEqual(count, v)
 
     def test_text_regex(self):
 
-        truth = {"s.{2}": 2, "shouldNotBeFound": 0}
+        mock_data = {"s.{2}": 2, "shouldNotBeFound": 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.V().has("name", Text.textRegex(k)).count().next()
             self.assertEqual(count, v)
 
     def test_text_contains_regex(self):
 
-        truth = {"f.{3,4}": 2, "shouldNotBeFound": 0}
+        mock_data = {"f.{3,4}": 2, "shouldNotBeFound": 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.E().has("reason", Text.textContainsRegex(k)).count().next()
             self.assertEqual(count, v)
 
     def test_text_contains_fuzzy(self):
 
-        truth = {"waxes": 1, "shouldNotBeFound": 0}
+        mock_data = {"waxes": 1, "shouldNotBeFound": 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.E().has("reason", Text.textContainsFuzzy(k)).count().next()
 
             self.assertEqual(count, v)
 
     def test_text_contains_prefix(self):
 
-        truth = {"wave": 1, "shouldNotBeFound": 0}
+        mock_data = {"wave": 1, "shouldNotBeFound": 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.E().has("reason", Text.textContainsPrefix(k)).count().next()
 
             self.assertEqual(count, v)
 
     def test_text_contains(self):
 
-        truth = {"loves": 2, "shouldNotBeFound": 0}
+        mock_data = {"loves": 2, "shouldNotBeFound": 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.E().has("reason", Text.textContains(k)).count().next()
 
             self.assertEqual(count, v)

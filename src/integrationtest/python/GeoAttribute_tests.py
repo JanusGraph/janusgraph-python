@@ -16,9 +16,8 @@ class TestGeoAttributes(unittest.TestCase):
         docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
         docker_ip = docker_ip.strip().decode("utf-8")
 
-        self.client = JanusGraphClient()
-        self.client = self.client.connect(host=str(docker_ip), port="8182",
-                                          traversal_source="gods_traversal").get_connection()
+        self.client = JanusGraphClient().connect(host=str(docker_ip), port="8182",
+                                                 traversal_source="gods_traversal").get_connection()
 
         self.container.start()
         self.g = Graph().traversal().withRemote(self.client)
@@ -33,16 +32,16 @@ class TestGeoAttributes(unittest.TestCase):
         place = GeoShape.Circle(50, 100, 100)
         self.g.V().has("name", "tartarus").property("place", place).next()
 
-        truth = {GeoShape.Circle(50, 100, 10): 1, GeoShape.Circle(50, 100, 500): 0}
+        mock_data = {GeoShape.Circle(50, 100, 10): 1, GeoShape.Circle(50, 100, 500): 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.E().has("place", Geo.geoContains(k)).count().next()
             self.assertEqual(count, v)
 
     def test_geo_within(self):
 
-        truth = {GeoShape.Circle(37.97, 23.72, 50): 2, GeoShape.Circle(37.97, 23.72, 5): 0}
+        mock_data = {GeoShape.Circle(37.97, 23.72, 50): 2, GeoShape.Circle(37.97, 23.72, 5): 0}
 
-        for k, v in truth.items():
+        for k, v in mock_data.items():
             count = self.g.E().has("place", Geo.geoWithin(k)).count().next()
             self.assertEqual(count, v)

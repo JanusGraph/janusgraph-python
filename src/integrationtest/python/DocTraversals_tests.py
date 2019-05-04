@@ -14,8 +14,7 @@ class TestDocTraversals(unittest.TestCase):
         docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
         docker_ip = docker_ip.strip().decode("utf-8")
 
-        self.client = JanusGraphClient()
-        self.client = self.client.connect(host=str(docker_ip), port="8182",
+        self.client = JanusGraphClient().connect(host=str(docker_ip), port="8182",
                                 traversal_source="gods_traversal").get_connection()
 
         self.container.start()
@@ -43,5 +42,3 @@ class TestDocTraversals(unittest.TestCase):
 
         self.assertEqual(firstBattlePlace.getLatitude(), 38.1)
         self.assertEqual(firstBattlePlace.getLongitude(), 23.7)
-
-        self.container.stop()
