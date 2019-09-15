@@ -60,6 +60,7 @@ expects few pre requisites to be installed before hand.
     - If you just want to build the library, and you have python interpreter installed at /usr/lib/python
         ```bash
         ./build.sh -d false -p /usr/lib/python
+        ./build.sh -d false -p python3.6
         ```
         
     - And so on depending on your requirements.

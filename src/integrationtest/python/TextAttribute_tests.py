@@ -1,7 +1,18 @@
-# Name: Debasish Kanhar
+# Copyright 2018 JanusGraph Python Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
 
 import unittest
-from subprocess import Popen, PIPE
 from JanusGraphContainer import JanusGraphContainer
 from janusgraph_python.driver.ClientBuilder import JanusGraphClient
 from gremlin_python.structure.graph import Graph
@@ -12,10 +23,7 @@ class TestTextAttributes(unittest.TestCase):
     def setUp(self):
         self.container = JanusGraphContainer()
 
-        docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
-        docker_ip = docker_ip.strip().decode("utf-8")
-
-        self.client = JanusGraphClient().connect(host=str(docker_ip), port="8182",
+        self.client = JanusGraphClient().connect(host=self.container.get_host_ip(), port="8182",
                                                  traversal_source="gods_traversal").get_connection()
 
         self.container.start()
