@@ -14,7 +14,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-if [ -z "${1:-}" ]; then
+if [[ -z "${1:-}" ]]; then
   echo "Usage $(basename $0) [Env Name]"
   exit 1
 else

@@ -15,7 +15,7 @@
 # limitations under the License.
 
 
-if [ -z "${1:-}" ]; then
+if [[ -z "${1:-}" ]]; then
   echo "Usage $(basename $0) [Env Name]"
   exit 1
 else
@@ -28,7 +28,6 @@ case $(uname -s) in
 esac
 #
 source "${python_path}"
-#pyenv activate "${ENV_NAME}"
 
 # Auto-generate .rst files from docstrings of Python files. The .rst files are then used to generate html files
 # for API docs
@@ -43,8 +42,6 @@ rm -rf janusgraph_python*.rst
 rm -rf modules.rst
 
 cd ../
-
-#pyenv deactivate
 
 case $(uname -s) in
     MINGW*)     source deactivate;;

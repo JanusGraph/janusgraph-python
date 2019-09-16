@@ -11,10 +11,12 @@ class TestDocTraversals(unittest.TestCase):
     def setUp(self):
         self.container = JanusGraphContainer()
 
-        docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
-        docker_ip = docker_ip.strip().decode("utf-8")
+        # docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
+        # docker_ip = docker_ip.strip().decode("utf-8")
+        #
+        # print("IP is ", docker_ip)
 
-        self.client = JanusGraphClient().connect(host=str(docker_ip), port="8182",
+        self.client = JanusGraphClient().connect(host=str("localhost"), port="8182",
                                 traversal_source="gods_traversal").get_connection()
 
         self.container.start()

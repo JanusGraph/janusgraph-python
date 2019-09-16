@@ -27,12 +27,12 @@ class JanusGraphContainer(object):
     def wait_for_container_to_start():
         while True:
             try:
-                docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
-                docker_ip = docker_ip.strip().decode("utf-8")
+                # docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
+                # docker_ip = docker_ip.strip().decode("utf-8")
 
                 client = JanusGraphClient()
 
-                client.connect(host=str(docker_ip), port="8182",
+                client.connect(host=str("localhost"), port="8182",
                                                 traversal_source="gods_traversal").get_connection()
 
                 client.close()
