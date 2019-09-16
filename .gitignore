@@ -44,3 +44,5 @@ site/
 # scripts files
 src/main/scripts/*
 src/main/scripts/*.*
+
+tempENV/

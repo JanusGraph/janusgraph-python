@@ -14,5 +14,5 @@
 
 """
 This module contains all the Serializer and Deserializer classes needed for converting between
-Python and Gramlin-server responses.
+Python and Gremlin-server responses.
 """
