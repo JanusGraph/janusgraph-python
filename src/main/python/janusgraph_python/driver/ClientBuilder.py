@@ -16,6 +16,8 @@ from ..structure.io.GraphsonReader import JanusGraphSONReader
 from ..structure.io.GraphsonWriter import JanusGraphSONWriter
 
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+from gremlin_python.structure.io.graphsonV3d0 import GraphSONReader
+from gremlin_python.structure.io.graphsonV3d0 import GraphSONWriter
 
 
 class JanusGraphClient(object):

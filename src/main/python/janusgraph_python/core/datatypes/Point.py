@@ -28,6 +28,7 @@ class Point(object):
         if not self.__are_coordinates_valid():
             raise ValueError("Invalid Coordinates passed. "
                              "Latitude needs to be b/w [-90, 90] and Longitude b/w [-180, 180]")
+
     @staticmethod
     def getShape():
         """ Returns the shape of Geometrical object

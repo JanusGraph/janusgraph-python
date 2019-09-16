@@ -11,18 +11,23 @@ as its core dependency with additional support for JanusGraph-specific types and
 
 The library has been tested with following Python versions:
 
-- [Python 3.4](https://www.python.org/downloads/release/python-340/).
-- [Python 3.5](https://www.python.org/downloads/release/python-350/).
-- [Python 3.6](https://www.python.org/downloads/release/python-360/).
-    
+  - [Python 3.4](https://www.python.org/downloads/release/python-340/).
+
+  - [Python 3.5](https://www.python.org/downloads/release/python-350/).
+
+  - [Python 3.6](https://www.python.org/downloads/release/python-360/).
+
 Once the required Python version is installed on system, please note the version number and the Python added 
 to Path. Make a note of the number, as that will be required during building of Library (on UNIX)
 Try running either of following commands on CLI, and make a note of the version which works:
 
-- python3 --version
-- python3.4 --version
-- python3.5 --version
-- python3.6 --version
+  - python3 --version
+    
+  - python3.4 --version
+    
+  - python3.5 --version
+    
+  - python3.6 --version
 
 **NOTE**: The above checks aren't needed if installing the drivers from PyPi
 
@@ -33,16 +38,18 @@ You can build the library yourself to test out the functionality of library. Ref
 
 ### Installing the Library
 
-- Though Installation of library is built as a functionality of the automated build scripts provided,
-  but if needed, user can follow the bellow instructions to install the library to environment of their choice.
-
-- To install library using Pip (It is not yet hosted):
+  - Though Installation of library is built as a functionality of the automated build scripts provided,
+      but if needed, user can follow the bellow instructions to install the library to environment of their choice.
+    
+  - To install library using Pip (It is not yet hosted):
+    
     ```bash
     # X is version number of JanusGraph Python client supported based on JanusGraph version chosen.
     pip install janusgraph_python=X
     ```
-
-- To install library from tarball, once it is built:
+    
+  - To install library from tarball, once it is built:
+     
      ```bash
      pip install target/dist/janusgraph_python/dist/janusgraph_python-X.tar.gz
      # X is version number of JanusGraph Python client supported based on JanusGraph version chosen.
@@ -61,10 +68,12 @@ z is patch number. Hence, if a client is build using x.y against JanusGraph a.b.
 irrespective of `.z` change, the client will remain compatible.
 
 Example::
-    ```bash
-    Version 1.0.0 is compatible with JanusGraph 0.3.0. Meaning that 1.0.1/1.0.2/..1.0.x will all be compatible with
-    JanusGraph 0.3.0
-    ```
+
+  ```bash
+  Version 1.0.0 is compatible with JanusGraph 0.3.0. Meaning that 1.0.1/1.0.2/..1.0.x will all be compatible with
+  JanusGraph 0.3.0
+  ```
+  
 ### Community
 
 JanusGraph-Python uses the same communication channels as JanusGraph in general. 
