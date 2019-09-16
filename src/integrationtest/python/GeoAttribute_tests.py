@@ -45,7 +45,8 @@ class TestGeoAttributes(unittest.TestCase):
         mock_data = {GeoShape.Circle(50, 100, 10): 1, GeoShape.Circle(50, 100, 500): 0}
         # Let us now query is any Geo shapes in Graph contains the following Geo objects:
         #   1: Geo circle of (50, 100) and radius 10 (Tartaraus just added above contains this object)
-        #   2: Geo circle of (50, 100) and radius 500 (None)
+        #   2: Geo circle of (50, 100) and radius 500
+        #           (As none of Geo objects in default Graph of Gods + Tartarus we added contains this object)
 
         for k, v in mock_data.items():
             count = self.g.E().has("place", Geo.geoContains(k)).count().next()
