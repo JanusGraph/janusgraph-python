@@ -35,8 +35,8 @@ before_script:
   - bash before-script.sh "${ENV_NAME}"
 
 script:
-  - bash build-library.sh "${ENV_NAME}"
   - bash build-docs.sh "${ENV_NAME}"
+  - bash build-library.sh "${ENV_NAME}"
 
 after_script:
   # Remove the virtualenv using pip

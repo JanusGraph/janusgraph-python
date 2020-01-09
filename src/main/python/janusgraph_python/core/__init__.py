@@ -16,4 +16,4 @@
 This core module of JanusGraph, and it includes data types like GeoShapes and attributes such as Predicates.
 """
 
-from .attribute import Geo, Text
+from .attribute import Text
