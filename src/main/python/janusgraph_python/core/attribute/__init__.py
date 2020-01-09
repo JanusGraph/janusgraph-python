@@ -16,5 +16,3 @@
 This module contains various attributes like Predicates needed to query JanusGraph.
 This module contains attribute for GeoPredicate and TextPredicates
 """
-
-from .Text import Text

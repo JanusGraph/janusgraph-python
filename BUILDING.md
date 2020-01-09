@@ -42,7 +42,9 @@
     -   A script named build.sh is created which accepts following parameters:
 
         -   `-d`: Default to true. Specifies if documentation is to be build.
+        
         -   `-b`: Defaults to true. Specifies if library is to be build.
+        
         -   `-p`: The path to Python interpreter on system. If not provided, the script expects python3 is installed\\
              and the command python3 works on shell and is used to generate virtualenv. If provided, the provided path is \\
              used to generate virtualenv.
@@ -51,19 +53,23 @@
         Eg: sudo -H ./build.sh
 
         If any of the defaults needs to be changed, the parameter needs to be specified explicitly while running the script.
+    
     -   If you want to build just the documentation, without the library.
         ```bash
         ./build.sh -b false
         ```
+        
     -   If you want to build just the library but aren't interested in building docs.
         ```bash
         ./build.sh -d false
         ```
+        
     -   If you just want to build the library, and you have python interpreter installed at /usr/lib/python
         ```bash
         ./build.sh -d false -p /usr/lib/python
         ./build.sh -d false -p python3.6
         ```
+        
     -   And so on depending on your requirements.
 
     Once done,

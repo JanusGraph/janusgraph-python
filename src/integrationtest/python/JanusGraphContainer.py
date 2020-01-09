@@ -61,7 +61,7 @@ class JanusGraphContainer(object):
         try:
             self.container.stop()
             return True
-        except:
+        except Exception:
             return False
 
 
