@@ -47,7 +47,7 @@ after_script:
 branches:
   only:
   - master
-  - integration_tests
+  - basic-pr
 before_deploy:
   - cd target/dist/janusgraph_python
 deploy:

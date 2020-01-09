@@ -17,4 +17,3 @@ This core module of JanusGraph, and it includes data types like GeoShapes and at
 """
 
 from .attribute import Geo, Text
-from .datatypes import GeoShape, RelationIdentifier

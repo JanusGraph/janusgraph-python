@@ -54,7 +54,6 @@ def initialize(project):
     project.set_property("coverage_exceptions", ["__init__"])
 
     project.set_property("unittest_test_method_prefix", "test")
-    project.set_property("unittest_file_suffix", "_test")
     project.set_property("unittest_module_glob", "_test")
 
     project.set_property("sphinx_config_path", "docs/")

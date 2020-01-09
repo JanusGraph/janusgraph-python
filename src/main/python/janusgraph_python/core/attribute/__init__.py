@@ -18,4 +18,3 @@ This module contains attribute for GeoPredicate and TextPredicates
 """
 
 from .Text import Text
-from .Geo import Geo

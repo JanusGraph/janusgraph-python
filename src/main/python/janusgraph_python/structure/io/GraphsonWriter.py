@@ -13,10 +13,7 @@
 # limitations under the License.
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONWriter
-from ...serializer.PointSerializer import PointSerializer
-from ...serializer.CircleSerializer import CircleSerializer
 from ...serializer.RelationIdentifierSerializer import RelationIdentifierSerializer
-from ...core.datatypes.GeoShape import Point, Circle
 from ...core.datatypes.RelationIdentifier import RelationIdentifier
 
 
@@ -53,8 +50,6 @@ class JanusGraphSONWriter(object):
         # Currently the default serializers registered.
 
         janusSerializers = {
-            Circle: CircleSerializer,
-            Point: PointSerializer,
             RelationIdentifier: RelationIdentifierSerializer
         }
 
