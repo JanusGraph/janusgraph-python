@@ -38,7 +38,6 @@ You can build the library yourself to test out the functionality of library. Ref
       but if needed, user can follow the bellow instructions to install the library to environment of their choice.
 
 -   To install library using Pip (It is not yet hosted):
-
     ```bash
     # X is version number of JanusGraph Python client supported based on JanusGraph version chosen.
     pip install janusgraph_python=X
