@@ -64,6 +64,9 @@ echo "Creating virtualenv with -p=${PYTHON_PATH}"
 virtualenv -p "${PYTHON_PATH}" "${ENV_NAME}"
 echo "Created virtualenv with name " ${ENV_NAME}
 
+# Set the constants needed for this project
+source constants.sh
+
 chmod +x before-script.sh
 ./before-script.sh "${ENV_NAME}"
 
