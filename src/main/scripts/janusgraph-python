@@ -1,0 +1,164 @@
+#!/usr/bin/env python
+
+# Copyright 2018 JanusGraph Python Authors
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+__author__ = "Debasish Kanhar (https://github.com/debasishdebs)"
+__credits__ = ["Jason Plurad", "sjudeng", "Florian Hockmann", "Misha Brukman"]
+
+from gremlin_python.process.graph_traversal import __
+from janusgraph_python.core.attribute.Text import Text
+from janusgraph_python.core.datatypes.GeoShape import GeoShape
+from janusgraph_python.core.attribute import Geo
+
+from janusgraph_python.driver.ClientBuilder import JanusGraphClient
+from janusgraph_python.serializer.CircleSerializer import CircleSerializer, Circle
+from janusgraph_python.serializer.GeoShapeDeserializer import GeoShapeDeserializer
+from janusgraph_python.structure.io.GraphsonWriter import JanusGraphSONWriter
+from janusgraph_python.structure.io.GraphsonReader import JanusGraphSONReader
+from gremlin_python.structure.graph import Graph
+import pprint
+
+
+if __name__ == '__main__':
+
+    # geoshape_identifier = "Geoshape"
+    #
+    # geoshape_deserializer = GeoShapeDeserializer
+    # obj_to_register = Circle
+    # circle_serializer = CircleSerializer
+    #
+    # reader_builder = JanusGraphSONReader().register_deserializer(geoshape_identifier, geoshape_deserializer)
+    # reader = reader_builder.get()
+    # writer_builder = JanusGraphSONWriter().register_serializer(obj_to_register, circle_serializer)
+    # writer = writer_builder.get()
+    #
+    from subprocess import check_output, Popen, PIPE
+
+    docker_ip = Popen(["docker-machine", "ip"], stdout=PIPE).communicate()[0]
+    docker_ip = docker_ip.strip().decode("utf-8")
+    print(docker_ip)
+    client = JanusGraphClient().connect(host=str(docker_ip), port="8182", traversal_source="gods_traversal").get_connection()
+    g = Graph().traversal().withRemote(client)
+
+    edges = g.E().has("reason", Text.textFuzzy("luves fresh breezs")).valueMap(True).toList()
+    print(edges)
+    # from gremlin_python.structure.graph import Graph
+    # from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+    # graph = Graph()
+    # myGraphTraversal = graph.traversal().withRemote(
+    #     DriverRemoteConnection('ws://192.168.99.100:8182/gremlin', 'gods_traversal'))
+    # print(myGraphTraversal.V().count())
+
+    # connection = JanusGraphClient().connect(host="169.62.88.246", port="8182", graph="airroutes_traversal").get_connection()
+    # g = Graph().traversal().withRemote(connection)
+    # print("Count: ", g.V().count().next())
+    # print(g.V().valueMap(True).limit(10).toList())
+    # shape = GeoShape.Circle(37.618, -122.375, 50)
+    # v = g.V().has("coords", Geo.geoWithin(shape)).next()
+    # data = g.V().has("coords", Geo.geoWithin(shape)).valueMap().toList()
+    # print(v)
+    # print(data)
+
+    # Next up would be adding a property with GeoShape data type back to JanusGraph
+    # Add a new node of type monster named Stymphalian birds.
+
+    # countBull = g.V().has("name", "Debasish Kanhar").count().next()
+    # if countBull >= 1:
+    #     birds = g.V().has("name", "Debasish Kanhar").next()
+    # else:
+    #     birds = g.addV("monster").property("name", "Debasish Kanhar").next()
+
+    # Retrive hercules node, so that we can add a new edge to it.
+    # hercules = g.V().has("name", Text.textFuzzy("hercauleas")).next()
+    # print(hercules)
+
+    # e = g.E().valueMap().toList()
+    # for i in range(len(e)):
+    #     print(e[i], " \n")
+    # print("==================")
+    # edges = g.E().has("reason", Text.textContainsFuzzy("breezs")).next()
+    # print(edges)
+    #
+    # edges = g.E().has("reason", Text.textFuzzy("luves fresh breezs")).next()
+    # print(edges)
+    #
+    # edges = g.E().has("reason", Text.textContainsFuzzy("breezs")).has("reason", Text.textContains("loves")).valueMap(True).toList()
+    # print(edges)
+    #
+    # edges = g.E().has("reason", Text.textRegex('l[ov]*es\s*w[a-v]*')).valueMap(True).toList()
+    # print(edges)
+    #
+    # edges = g.E().has("reason", Text.textContainsRegex("br[ez]*s")).valueMap(True).toList()
+    # print(edges)
+    #
+    # Now we add edge b/w the vertices created and retrieved.
+    # Since we are going to add a GeoShape point specifying where the battle happened,
+    # First let us create the GeoShape obj
+
+    # We define arcadia point by its lat and long
+    # arcadia = GeoShape.Circle(21.50, 7.58, 5)
+    # We add arcadia POINT to our newly created edge.
+    # edgeAdded = g.V(birds).as_("to").V(hercules).addE("battled").property("time", 290).property("place", arcadia).to("to").next()
+    #
+    # print(15 * "=")
+    # print("Testing retrival of Point shape")
+    # edgesH = g.V(birds).inE("battled").has("time", 190).valueMap("place").next()
+    # print(edgesH)
+    # print(arcadia)
+    # print(edgeAdded)
+    # print(15 * "=")
+    #
+    # if g.V().has("name", "Rocky").count().next() > 0:
+    #     v2 = g.V().has("name", "Rocky").next()
+    # else:
+    #     v2 = g.addV("monster").property("name", "Rocky").next()
+    # athens = Circle(23.46, 37.59, 10)
+    # g.V(v2).as_("to").V(hercules).addE("battled").property("time", 91).property("place", athens).to("to").next()
+    #
+    # print(15 * "=")
+    # print("Testing retrival of Circle shape")
+    # edgesH = g.V(v2).inE("battled").valueMap("place").next()
+    # print(edgesH)
+    # print(15 * "=")
+
+    # print(15 * "=")
+    # print("Testing another query (herculeasBattles)")
+    # herculeasBattles = g.V().has("name", Text.textContainsPrefix("hercu")).\
+    #                         outE("battled").project("time", "place").by("time").by("place").toList()
+    # print(herculeasBattles)
+    # print(15 * "=")
+
+    # print(15 * "=")
+    # print("Testing edge serialization")
+    # id = g.E(g.E().id().next()).id().next()
+    # print(id)
+    # print(15 * "=")
+
+    # Next I'm going to test GeoPredicates
+    # shape = Circle(23, 37, 1000)
+    # print(g.V().has("name", Text.textContainsFuzzy("herculeas")).outE().toList())
+    # print(15 * "=")
+    # shape = GeoShape.Circle(21.50, 7.58, 100)
+    # shape1 = GeoShape.Circle(21.50, 7.58, 2)
+    # edges = g.V().has("name", Text.textContainsFuzzy("herculeas")).\
+    #                         outE().has("place", Geo.geoWithin(shape)).next()
+    # edges = g.V().has("name", "hercules").outE().has("place", Geo.geoWithin(shape)).next()
+    # herculesBattledWith = g.V().has("name", "hercules").outE().has("place", Geo.geoContains(shape1)).next()
+    # print("Edges etrived using Geo Predicates")
+    # pprint.pprint(herculesBattledWith)
+    # print(15 * "=")
+    # pprint.pprint(edges)
+    # print(15 * "=")
+    # print(g.V().has("name", Text.textContainsFuzzy("herculeas")).outE().toList())
