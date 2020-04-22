@@ -45,8 +45,8 @@
         
         -   `-b`: Defaults to true. Specifies if library is to be build.
         
-        -   `-p`: The path to Python interpreter on system. If not provided, the script expects python3 is installed\\
-             and the command python3 works on shell and is used to generate virtualenv. If provided, the provided path is \\
+        -   `-p`: The path to Python interpreter on system. If not provided, the script expects python3 is installed
+             and the command python3 works on shell and is used to generate virtualenv. If provided, the provided path is 
              used to generate virtualenv.
 
         **NOTE**: If you are building library on Max OS (OSx), then you will need to run by pre pending sudo -H. 

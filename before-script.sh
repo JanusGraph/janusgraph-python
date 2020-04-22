@@ -28,16 +28,9 @@ case $(uname -s) in
 esac
 
 source "${python_path}"
-echo "Sourced " ${ENV_NAME}
-pip -V
-pip show pybuilder
 
 python -m pip install pybuilder > /dev/null
 python -m pip install sphinx > /dev/null
-
-pip show pybuilder
-pip show docker
-pip show sphinx
 
 echo "Installed pre-requisite libraries from pip"
 
