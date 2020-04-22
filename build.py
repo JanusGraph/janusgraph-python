@@ -12,18 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+from constants import description, copyright, license, name, tinkerpop_version, janusgraph_version, version
 from pybuilder.core import use_plugin, init, Author
 
 authors = [Author("Debasish Kanhar", "dekanhar@in.ibm.com")]
-description = "Python client drivers for JanusGraph"
-copyright = "Copyright 2018 JanusGraph Python Authors"
-license = "Apache License v2.0"
+description = description
+copyright = copyright
+license = license
 
-name = "janusgraph_python"
+name = name
 
-tinkerpop_version = "3.3.3"
-janusgraph_version = "0.3.0"
-version = "0.1.0"
+tinkerpop_version = tinkerpop_version
+janusgraph_version = janusgraph_version
+version = version
 
 use_plugin("python.core")
 # the python unittest plugin allows running python's standard library unittests
