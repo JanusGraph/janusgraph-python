@@ -28,10 +28,15 @@ case $(uname -s) in
 esac
 
 source "${python_path}"
+echo "Sourced " ${ENV_NAME}
+pip -V
+pip show pybuilder
 
 python -m pip install pybuilder > /dev/null
 python -m pip install sphinx > /dev/null
 python -m pip install docker > /dev/null
+
+echo "Installed pre-requisite libraries from pip"
 
 case $(uname -s) in
     MINGW*)     source deactivate;;
