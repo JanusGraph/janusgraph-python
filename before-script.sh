@@ -34,7 +34,6 @@ pip show pybuilder
 
 python -m pip install pybuilder > /dev/null
 python -m pip install sphinx > /dev/null
-python -m pip install docker > /dev/null
 
 pip show pybuilder
 pip show docker
