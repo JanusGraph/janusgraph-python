@@ -2,8 +2,8 @@
 
 ## Python Client drivers for [JanusGraph](http://janusgraph.org)
 
-JanusGraph-Python is the Python drivers for connecting to JanusGraph. 
-It extends Apache TinkerPop™'s [Gremlin-Python](http://tinkerpop.apache.org/docs/current/reference/#_gremlin_python) 
+JanusGraph-Python is the Python driver for connecting to JanusGraph. 
+It extends Apache TinkerPop™'s [Gremlin-Python](http://tinkerpop.apache.org/docs/current/reference/#gremlin-python) 
 as its core dependency with additional support for JanusGraph-specific types and predicates.
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/a643a483556740c1b87ba29e160d37b6)](https://www.codacy.com/app/JanusGraph/janusgraph-python?utm_source=github.com&utm_medium=referral&utm_content=JanusGraph/janusgraph-python&utm_campaign=Badge_Grade)
@@ -38,12 +38,14 @@ You can build the library yourself to test out the functionality of library. Ref
       but if needed, user can follow the bellow instructions to install the library to environment of their choice.
 
 -   To install library using Pip (It is not yet hosted):
+
     ```bash
     # X is version number of JanusGraph Python client supported based on JanusGraph version chosen.
     pip install janusgraph_python=X
     ```
     
 -   To install library from tarball, once it is built:
+
     ```bash
     pip install target/dist/janusgraph_python/dist/janusgraph_python-X.tar.gz
     # X is version number of JanusGraph Python client supported based on JanusGraph version chosen.
@@ -51,11 +53,10 @@ You can build the library yourself to test out the functionality of library. Ref
 
 ### Compatibility Matrix
 
-| JanusGraph Version | Client Version |
+| Client Version | JanusGraph Version |
 | :----------------: | :------------: |
-|        0.3.0       |      0.1.0     |
-|        0.3.1       |      0.1.0     |
-|        0.2.x       |  Not Released  |
+|        0.1.0       |      0.3.0     |
+|    Not Released    |  0.4.x  |
 
 The JanusGraph client follows x.y.z version number, and according to [Semantic Versioning](https://semver.org/) 
 z is patch number. Hence, if a client is build using x.y against JanusGraph a.b.c, 
@@ -65,7 +66,7 @@ Example::
 
 ```bash
 Version 1.0.0 is compatible with JanusGraph 0.3.0. Meaning that 1.0.1/1.0.2/..1.0.x will all be compatible with
-JanusGraph 0.3.0
+JanusGraph 0.3.0, 0.3.1, 0.3.2 and so on
 ```
 
 ### Community

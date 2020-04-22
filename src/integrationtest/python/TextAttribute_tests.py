@@ -58,7 +58,6 @@ class TestTextAttributes(unittest.TestCase):
             self.assertEqual(count, v)
 
     def test_text_contains_regex(self):
-
         mock_data = {"f.{3,4}": 2, "shouldNotBeFound": 0}
 
         for k, v in mock_data.items():
@@ -66,7 +65,6 @@ class TestTextAttributes(unittest.TestCase):
             self.assertEqual(count, v)
 
     def test_text_contains_fuzzy(self):
-
         mock_data = {"waxes": 1, "shouldNotBeFound": 0}
 
         for k, v in mock_data.items():
@@ -75,7 +73,6 @@ class TestTextAttributes(unittest.TestCase):
             self.assertEqual(count, v)
 
     def test_text_contains_prefix(self):
-
         mock_data = {"wave": 1, "shouldNotBeFound": 0}
 
         for k, v in mock_data.items():
@@ -84,7 +81,6 @@ class TestTextAttributes(unittest.TestCase):
             self.assertEqual(count, v)
 
     def test_text_contains(self):
-
         mock_data = {"loves": 2, "shouldNotBeFound": 0}
 
         for k, v in mock_data.items():

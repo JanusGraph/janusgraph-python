@@ -13,17 +13,18 @@
 # limitations under the License.
 
 from pybuilder.core import use_plugin, init, Author
+from os import environ
 
 authors = [Author("Debasish Kanhar", "dekanhar@in.ibm.com")]
-description = "Python client drivers for JanusGraph"
-copyright = "Copyright 2018 JanusGraph Python Authors"
-license = "Apache License v2.0"
+description = environ.get("description")
+copyright = environ.get("copyright")
+license = environ.get("license")
 
-name = "janusgraph_python"
+name = environ.get("name")
 
-tinkerpop_version = "3.3.3"
-janusgraph_version = "0.3.0"
-version = "0.1.0"
+tinkerpop_version = environ.get("tinkerpop_version")
+janusgraph_version = environ.get("janusgraph_version")
+version = environ.get("version")
 
 use_plugin("python.core")
 # the python unittest plugin allows running python's standard library unittests
@@ -62,3 +63,4 @@ def initialize(project):
 
     project.set_property("dir_dist", "target/dist/" + project.name)
     project.depends_on("gremlinpython", "=={}".format(tinkerpop_version))
+    project.depends_on("docker")

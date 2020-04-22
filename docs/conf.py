@@ -17,10 +17,15 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 
-from build import version as project_version
-from build import description as project_name
-from build import name as dist_name
-from build import copyright
+project_version = os.environ.get("version")
+project_name = os.environ.get("description")
+dist_name = os.environ.get("name")
+copyright = os.environ.get("copyright")
+#
+# from constants import version as project_version
+# from constants import description as project_name
+# from constants import name as dist_name
+# from constants import copyright
 
 # All configuration values have a default; values that are commented out
 # serve to show the default.

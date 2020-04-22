@@ -18,29 +18,30 @@ python:
 - '3.6'
 - '3.5'
 - '3.4'
-- '3.5-dev'
-- '3.6-dev'
+#- '3.5-dev'
+#- '3.6-dev'
 
-env:
-  global:
-    - ENV_NAME=tmpenv
+#env:
+#  global:
+#    - ENV_NAME=tmpenv
 
 install:
   - pip install virtualenv
   # Create Virtual env within which all packages will be installed. Default Python version is Travis' Python version
-  - virtualenv "${ENV_NAME}"
+#  - virtualenv "${ENV_NAME}"
 
-before_script:
+#before_script:
   # Install all pre-requisites for building library and docs
-  - bash before-script.sh "${ENV_NAME}"
+#  - bash before-script.sh "${ENV_NAME}"
 
 script:
-  - bash build-docs.sh "${ENV_NAME}"
-  - bash build-library.sh "${ENV_NAME}"
+#  - bash build-docs.sh "${ENV_NAME}"
+#  - bash build-library.sh "${ENV_NAME}"
+  - bash build.sh -b true -d true -p python3
 
-after_script:
+#after_script:
   # Remove the virtualenv using pip
-  - pip uninstall virtualenv -y
+#  - pip uninstall virtualenv -y
 
 # Deployment to PyPi configuration
 # TODO: Update personal credentials for publishing to PyPi with JanusGraph user credentials.

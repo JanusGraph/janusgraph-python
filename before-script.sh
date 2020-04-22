@@ -31,7 +31,8 @@ source "${python_path}"
 
 python -m pip install pybuilder > /dev/null
 python -m pip install sphinx > /dev/null
-python -m pip install docker > /dev/null
+
+echo "Installed pre-requisite libraries from pip"
 
 case $(uname -s) in
     MINGW*)     source deactivate;;
