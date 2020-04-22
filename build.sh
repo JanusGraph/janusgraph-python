@@ -60,8 +60,13 @@ else
   exit 1
 fi
 
-echo "Creating virtualenv with -p=${PYTHON_PATH}"
 virtualenv -p "${PYTHON_PATH}" "${ENV_NAME}"
+echo "Created virtualenv with -p=${PYTHON_PATH}"
+
+# Set the constants needed for this project
+source constants.sh
+
+echo "Sourced constants from constants.sh"
 
 chmod +x before-script.sh
 ./before-script.sh "${ENV_NAME}"
@@ -80,3 +85,4 @@ fi
 
 # Remove all files for temp environment, as that is already deactivated
 rm -rf "${ENV_NAME}"
+echo "Removed ${ENV_NAME}"

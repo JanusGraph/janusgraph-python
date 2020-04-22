@@ -30,6 +30,8 @@ esac
 
 source "${python_path}"
 
+echo "Python being used is " $(python -V)
+
 # For building the library
 pyb -v
 

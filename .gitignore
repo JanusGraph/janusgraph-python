@@ -30,6 +30,11 @@ docs/janusgraph_python.rst
 
 # PyBuilder
 target/
+.pybuilder/
+
+# node
+node_modules/
+package-lock.json
 
 # pyenv
 .python-version
