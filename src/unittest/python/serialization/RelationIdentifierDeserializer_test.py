@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import unittest
-from janusgraph_python.structure.io.GraphsonReader import JanusGraphSONReader
+from janusgraph_python.structure.io.graphson.GraphsonReaderBuilder import JanusGraphSONReaderBuilder
 from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
 
 
@@ -22,7 +22,7 @@ class TestRelationIdentifierDeserialization(unittest.TestCase):
     def test_relationID_deserialization(self):
         relationID = "74q-9n4-b2t-cr4"
 
-        reader = JanusGraphSONReader().build()
+        reader = JanusGraphSONReaderBuilder().build()
 
         relIDJSON = dict()
         relIDJSON["@type"] = "janusgraph:RelationIdentifier"
@@ -31,4 +31,4 @@ class TestRelationIdentifierDeserialization(unittest.TestCase):
         expectedRelID = reader.toObject(relIDJSON)
         actualRelID = RelationIdentifier(relationID)
 
-        self.assertEqual(expectedRelID, actualRelID.__str__())
+        self.assertEqual(expectedRelID, actualRelID)

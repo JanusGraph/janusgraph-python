@@ -14,5 +14,5 @@
 
 """
 This module contains all the Serializer and Deserializer classes needed for converting between
-Python and Gremlin-server responses.
+Python and JanusGraph Server responses.
 """

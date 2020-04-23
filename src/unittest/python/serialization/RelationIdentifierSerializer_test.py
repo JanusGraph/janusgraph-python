@@ -15,7 +15,7 @@
 import unittest
 import json
 from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
-from janusgraph_python.structure.io.GraphsonWriter import JanusGraphSONWriter
+from janusgraph_python.structure.io.graphson.GraphsonWriterBuilder import JanusGraphSONWriterBuilder
 
 
 class TestRelationIdentifierSerializer(unittest.TestCase):
@@ -24,7 +24,7 @@ class TestRelationIdentifierSerializer(unittest.TestCase):
         relationID = "74q-9n4-b2t-cr4"
 
         edge = RelationIdentifier(relationID)
-        writer = JanusGraphSONWriter().build()
+        writer = JanusGraphSONWriterBuilder().build()
 
         graphSON = writer.writeObject(edge)
 

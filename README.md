@@ -55,19 +55,9 @@ You can build the library yourself to test out the functionality of library. Ref
 
 | Client Version | JanusGraph Version |
 | :----------------: | :------------: |
-|        0.1.0       |      0.3.0     |
+|        0.1.x       |      0.3.x     |
 |    Not Released    |  0.4.x  |
 
-The JanusGraph client follows x.y.z version number, and according to [Semantic Versioning](https://semver.org/) 
-z is patch number. Hence, if a client is build using x.y against JanusGraph a.b.c, 
-irrespective of `.z` change, the client will remain compatible.
-
-Example::
-
-```bash
-Version 1.0.0 is compatible with JanusGraph 0.3.0. Meaning that 1.0.1/1.0.2/..1.0.x will all be compatible with
-JanusGraph 0.3.0, 0.3.1, 0.3.2 and so on
-```
 
 ### Community
 

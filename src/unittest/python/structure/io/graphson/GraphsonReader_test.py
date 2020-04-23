@@ -14,7 +14,7 @@
 
 
 import unittest
-from janusgraph_python.structure.io.GraphsonReader import JanusGraphSONReader
+from janusgraph_python.structure.io.graphson.GraphsonReaderBuilder import JanusGraphSONReaderBuilder
 
 
 class MockDeserializer(object):
@@ -71,9 +71,9 @@ class TestGraphsonReader(unittest.TestCase):
     def test_mock_deserializer(self):
         deserializer = MockDeserializer
 
-        readerClass = JanusGraphSONReader()
+        readerClass = JanusGraphSONReaderBuilder()
 
-        readerClass.register_deserializer(self.GRAPHSON_BASE_TYPE, deserializer)
+        readerClass.register_deserializer(self.GRAPHSON_BASE_TYPE, self.GRAPHSON_PREFIX, deserializer)
         reader = readerClass.build()
 
         mockJSON = dict()

@@ -14,20 +14,16 @@
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONReader
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
-from ...serializer.RelationIdentifierDeserializer import RelationIdentifierDeserializer
+from janusgraph_python.serializer.RelationIdentifierDeserializer import RelationIdentifierDeserializer
 
 
-class JanusGraphSONReader(object):
+class JanusGraphSONReaderBuilder(object):
     """
     This class registers JanusGraph-specific deserializers so that objects like GeoShape, RelationIdentifier
     can be interpreted on Python client side.
     """
 
-    GRAPHSON_PREFIX = "janusgraph"
-    GEO_GRAPHSON_BASE_TYPE = "Geoshape"
-    RELATIONID_BASE_TYPE = "RelationIdentifier"
-    GeoShape_GRAPHSON_TYPE = GraphSONUtil.formatType(GRAPHSON_PREFIX, GEO_GRAPHSON_BASE_TYPE)
-    RelationID_GRAPHSON_TYPE = GraphSONUtil.formatType(GRAPHSON_PREFIX, RELATIONID_BASE_TYPE)
+    RELATIONID_GRAPHSON_TYPE = "janusgraph:RelationIdentifier"
 
     deserializers = dict()
 
@@ -37,7 +33,7 @@ class JanusGraphSONReader(object):
     def __register_default_deserializers(self):
         """
             This method is used to register the Default deserializers for JanusGraph's python client.
-            Currently the deserializer registers GeoShape and RelationIdentifier classes.
+            Currently the deserializer registers RelationIdentifier classes.
 
         Returns:
             None
@@ -54,7 +50,7 @@ class JanusGraphSONReader(object):
         # Currently the default de-serializers registered.
 
         janusDeSerializers = {
-            self.RelationID_GRAPHSON_TYPE: RelationIdentifierDeserializer
+            self.RELATIONID_GRAPHSON_TYPE: RelationIdentifierDeserializer
         }
 
         return janusDeSerializers
@@ -69,23 +65,20 @@ class JanusGraphSONReader(object):
         self.reader = GraphSONReader(self.deserializers)
         return self.reader
 
-    def register_deserializer(self, typeClass, deserializer):
+    def register_deserializer(self, typeID, prefix, deserializer):
         """ This method is used to registering any additional JanusGraph de-serializers.
 
         Args:
-            typeClass (str): The identifier to be used with underlying graph to register the De-serializer against.
-            deserializer: The Deserializer class.
+            typeID (str): The identifier to be used to register the De-serializer against.
+            prefix (str): The Namespace to use in typeID
+            deserializer: The De-serializer class.
 
         Returns:
 
         """
 
-        objectIdentifier = GraphSONUtil.formatType(self.GRAPHSON_PREFIX, typeClass)
+        object_identifier = GraphSONUtil.formatType(prefix, typeID)
 
-        self.deserializers[objectIdentifier] = deserializer
+        self.deserializers[object_identifier] = deserializer
 
         return self
-
-    def get(self):
-        reader = GraphSONReader(self.deserializers)
-        return reader

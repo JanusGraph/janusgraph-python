@@ -13,14 +13,14 @@
 # limitations under the License.
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONWriter
-from ...serializer.RelationIdentifierSerializer import RelationIdentifierSerializer
-from ...core.datatypes.RelationIdentifier import RelationIdentifier
+from janusgraph_python.serializer.RelationIdentifierSerializer import RelationIdentifierSerializer
+from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
 
 
-class JanusGraphSONWriter(object):
+class JanusGraphSONWriterBuilder(object):
     """
-    This class registers JanusGraph specific serializers so that Python objects like GeoShape, RelationIdentifier
-    can be interpreted on Gremlin server side.
+    This class registers JanusGraph specific serializers so that Python objects like RelationIdentifier
+    can be interpreted on JanusGraph Server side.
     """
 
     serializers = dict()
@@ -31,7 +31,7 @@ class JanusGraphSONWriter(object):
     def __register_default_serializers(self):
         """
             This method is used to register the Default serializers for JanusGraph's python client.
-            Currently the serializer registers GeoShape and RelationIdentifier classes.
+            Currently the serializer registers RelationIdentifier classes.
 
         Returns:
             None
@@ -65,21 +65,17 @@ class JanusGraphSONWriter(object):
         self.writer = GraphSONWriter(self.serializers)
         return self.writer
 
-    def register_serializer(self, typeClass, serializer):
+    def register_serializer(self, typeID, serializer):
         """ This method is used to registering any additional JanusGraph serializers.
 
         Args:
-            typeClass (type):
+            typeID (type):
             serializer:
 
         Returns:
 
         """
 
-        self.serializers[typeClass] = serializer
+        self.serializers[typeID] = serializer
 
         return self
-
-    def get(self):
-        writer = GraphSONWriter(self.serializers)
-        return writer

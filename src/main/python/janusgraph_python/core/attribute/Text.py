@@ -36,7 +36,7 @@ class Text(object):
     @staticmethod
     def textContainsPrefix(value):
         """
-        Implements JanusGraph's textContainsFuzzy functionality.
+        Implements JanusGraph's textContainsPrefix functionality.
         Returns true if (at least) one word inside the text string begins with the query string
 
         Args:
@@ -64,7 +64,7 @@ class Text(object):
     @staticmethod
     def textContainsRegex(value):
         """
-        Implements JanusGraph's textContainsPrefix functionality.
+        Implements JanusGraph's textContainsRegex functionality.
         Returns true if (at least) one word inside the text string matches the given regular expression
 
         Args:

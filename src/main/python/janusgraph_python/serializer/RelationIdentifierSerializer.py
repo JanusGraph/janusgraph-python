@@ -13,11 +13,12 @@
 # limitations under the License.
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
+from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
 
 
 class RelationIdentifierSerializer(object):
     """
-    This is serializer method being used to serialize RelationIdentifier object which is used by JanusGraph for edge ID
+    This is serializer class being used to serialize RelationIdentifier object which is used by JanusGraph for edge ID
     """
 
     GRAPHSON_PREFIX = "janusgraph"
@@ -32,20 +33,28 @@ class RelationIdentifierSerializer(object):
             writer:
 
         Returns:
-            json
+            dict
         """
 
-        relationJSON = cls.__relationID_to_dict(relationID)
+        relationJSON = cls.__relationid_to_dict(relationID)
 
         serializedJSON = GraphSONUtil.typedValue(cls.GRAPHSON_BASE_TYPE, relationJSON, cls.GRAPHSON_PREFIX)
 
         return serializedJSON
 
     @classmethod
-    def __relationID_to_dict(cls, relationID):
+    def __relationid_to_dict(cls, relationID):
+        """
+
+        Args:
+            relationID (RelationIdentifier):
+
+        Returns:
+            dict
+        """
 
         relationIdDict = dict()
 
-        relationIdDict["relationId"] = relationID.toString()
+        relationIdDict["relationId"] = relationID.relationID
 
         return relationIdDict

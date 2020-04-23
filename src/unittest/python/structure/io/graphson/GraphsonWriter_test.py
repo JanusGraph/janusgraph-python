@@ -14,7 +14,7 @@
 
 
 import unittest
-from janusgraph_python.structure.io.GraphsonWriter import JanusGraphSONWriter
+from janusgraph_python.structure.io.graphson.GraphsonWriterBuilder import JanusGraphSONWriterBuilder
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
 import json
 
@@ -66,7 +66,7 @@ class TestGraphsonWriter(unittest.TestCase):
         # Create Mock object's serializer
         serializer = MockSerializer
 
-        writerClass = JanusGraphSONWriter()
+        writerClass = JanusGraphSONWriterBuilder()
 
         # Register the serializer and object. and build it.
         writerClass.register_serializer(mockObj, serializer)

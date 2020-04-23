@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import docker
-from janusgraph_python.driver.ClientBuilder import JanusGraphClient
+from janusgraph_python.driver.JanusGraphRemoteConnectionBuilder import JanusGraphRemoteConnectionBuilder
 import time
 
 
@@ -40,7 +40,7 @@ class JanusGraphContainer(object):
     def wait_for_container_to_start():
         while True:
             try:
-                client = JanusGraphClient()
+                client = JanusGraphRemoteConnectionBuilder()
 
                 client.connect(host="localhost", port="8182",
                                                 traversal_source="gods_traversal").get_connection()

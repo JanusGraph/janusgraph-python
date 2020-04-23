@@ -14,7 +14,7 @@
 
 import unittest
 from JanusGraphContainer import JanusGraphContainer
-from janusgraph_python.driver.ClientBuilder import JanusGraphClient
+from janusgraph_python.driver.JanusGraphRemoteConnectionBuilder import JanusGraphRemoteConnectionBuilder
 from gremlin_python.structure.graph import Graph
 from janusgraph_python.core.attribute.Text import Text
 
@@ -23,7 +23,7 @@ class TestTextAttributes(unittest.TestCase):
     def setUp(self):
         self.container = JanusGraphContainer()
 
-        self.client = JanusGraphClient().connect(host=self.container.get_host_ip(), port="8182",
+        self.client = JanusGraphRemoteConnectionBuilder().connect(host=self.container.get_host_ip(), port="8182",
                                                  traversal_source="gods_traversal").get_connection()
 
         self.container.start()

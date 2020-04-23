@@ -13,6 +13,6 @@
 # limitations under the License.
 
 """
-This module contains various Data types not available in Python,
+This module contains various Data types not available in Gremlin Python,
 but are available in JanusGraph like Geoshape, RelationIdentifier
 """

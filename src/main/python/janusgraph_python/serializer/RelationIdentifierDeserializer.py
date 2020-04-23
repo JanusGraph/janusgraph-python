@@ -17,17 +17,17 @@ from ..core.datatypes.RelationIdentifier import RelationIdentifier
 
 class RelationIdentifierDeserializer(object):
     """
-    This is deserializer method to be used to de-serialize RelationIdentifier objects which is used by JanusGraph
+    This is deserializer class to be used to de-serialize RelationIdentifier objects which is used by JanusGraph
     for encoding Edge IDs
     """
 
     @classmethod
     def objectify(cls, graphsonObj, reader):
-        """ The Deserializer method to de-serialize a RelationIdentifier into corresponding Python object.
+        """ This method to de-serialize a RelationIdentifier into corresponding Python object.
 
         Args:
-            graphsonObj (dict): The serialized JSON returned from JanusGraph's gremlin-server.
-            reader: The reader class to use for de-serializing the GeoShape object.
+            graphsonObj (dict): The serialized JSON returned from JanusGraph Server.
+            reader: The reader class to use for de-serializing the JanusGraph Relation object.
 
         Returns:
             RelationIdentifier
@@ -35,4 +35,4 @@ class RelationIdentifierDeserializer(object):
 
         relationID = RelationIdentifier(str(graphsonObj["relationId"]))
 
-        return relationID.__str__()
+        return relationID

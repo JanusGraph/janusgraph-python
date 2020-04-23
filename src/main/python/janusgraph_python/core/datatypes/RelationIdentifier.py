@@ -41,7 +41,7 @@ class RelationIdentifier(object):
         return not self.__eq__(other)
 
     def __str__(self):
-        return self.relationID
+        return str(self.relationID)
 
     def __hash__(self):
         return hash(self.relationID) if self.relationID is not None else 0
@@ -53,21 +53,5 @@ class RelationIdentifier(object):
 
         """
         edgeID = dict()
-        edgeID["janusgraph:RelationIdentifier"] = self.toString()
+        edgeID["janusgraph:RelationIdentifier"] = self.__str__()
         return edgeID
-
-    def toString(self):
-        """ Returns string representation of RelationIdentifier.
-
-        Returns:
-            str
-        """
-        return str(self.relationID)
-
-    def getID(self):
-        """ Get the underlaying ID of class.
-
-        Returns:
-            str
-        """
-        return self.toString()
