@@ -8,10 +8,10 @@
 -   Pre-Requisites:
 
     -   Python needs to be installed on system. The library is currently tested against Python
-        3.4, 3.5 & 3.6 only.
+        3.4, 3.5, 3.6, 3.7 and 3.8
 
     -   Python is added to system path. Make sure, the user can run the following commands from command line:
-        -   python3/ python3.4/ python3.5/ python3.6 on Unix machines.
+        -   python3/ python3.4/ python3.5/ python3.6 / python3.7 / python3.8 on Unix machines.
         -   python on Windows machines.
 
     -   Virtualenv needs to be installed. See [PyPi Page](https://pypi.org/project/virtualenv/) for installation steps.
@@ -21,6 +21,7 @@
         -   CentOS
         -   RHEL 7
         -   Ubuntu 18.04
+        -   Ubuntu WSL
         -   MacOS
 
 -   Building on Windows 7:
