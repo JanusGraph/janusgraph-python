@@ -29,7 +29,7 @@ script:
   - bash build.sh
 
 # Deployment to PyPi configuration
-# TODO: Update personal credentials for publishing to PyPi with JanusGraph user credentials.
+# TODO: Update User and Password credentials for deploying to PyPi
 branches:
   only:
   - master

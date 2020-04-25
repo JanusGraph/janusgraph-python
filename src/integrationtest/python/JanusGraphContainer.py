@@ -42,7 +42,7 @@ class JanusGraphContainer(object):
             try:
                 client = JanusGraphRemoteConnectionBuilder()
 
-                client.connect(host="localhost", port="8182",
+                client.connect(host="localhost", port=8182,
                                                 traversal_source="gods_traversal").get_connection()
 
                 client.close()

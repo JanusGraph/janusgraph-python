@@ -22,7 +22,7 @@ class TestDocTraversals(unittest.TestCase):
     def setUp(self):
         self.container = JanusGraphContainer()
 
-        self.client = JanusGraphRemoteConnectionBuilder().connect(host=self.container.get_host_ip(), port="8182",
+        self.client = JanusGraphRemoteConnectionBuilder().connect(host=self.container.get_host_ip(), port=8182,
                                 traversal_source="gods_traversal").get_connection()
 
         self.container.start()
