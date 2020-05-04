@@ -42,7 +42,7 @@ The query is to find all edges where ``reason`` contains ``breezes``
 
 .. code-block:: python
 
-    from janusgraph_python.core.attribute.Text import Text
+    from janusgraph_python.core.attribute.text import Text
 
     # Find all edges which contains the word breezes
     edges = g.E().has("reason", Text.textContains("breezes")).next()
@@ -69,7 +69,7 @@ Similarly, we use in Conjugation with multiple other attributes to query edge as
 
 .. code-block:: python
 
-    from janusgraph_python.core.attribute.Text import Text
+    from janusgraph_python.core.attribute.text import Text
 
     hercules = g.V().has("name", Text.textContainsFuzzy("hercauleas")).valueMap(True).next()
     print(hercules)
@@ -101,7 +101,7 @@ The difference between TextContains and TextContainsPrefix and TextPrefix can be
 
 .. code-block:: python
 
-    from janusgraph_python.core.attribute.Text import Text
+    from janusgraph_python.core.attribute.text import Text
 
     edges = g.E().has("reason", Text.textContainsFuzzy("breezs")).has("reason", Text.textContains("loves")).\
                 valueMap().toList()
@@ -135,7 +135,7 @@ TextContainsRegex matches with each individual words in string, according to reg
 
 .. code-block:: python
 
-    from janusgraph_python.core.attribute.Text import Text
+    from janusgraph_python.core.attribute.text import Text
 
     edges = g.E().has("reason", Text.textContainsRegex("br[ez]*s")).valueMap().toList()
     print(edges)
@@ -154,7 +154,7 @@ The difference between TextContainsFuzzy and TextFuzzy is seen in example bellow
 
 .. code-block:: python
 
-    from janusgraph_python.core.attribute.Text import Text
+    from janusgraph_python.core.attribute.text import Text
 
     edges = g.E().has("reason", Text.textContainsFuzzy("breezs")).valueMap(True).toList()
     print(edges)
@@ -178,7 +178,7 @@ The difference between TextContainsPrefix and TextPrefix is shows in example bel
 
 .. code-block:: python
 
-    from janusgraph_python.core.attribute.Text import Text
+    from janusgraph_python.core.attribute.text import Text
 
     edges = g.E().has("reason", Text.textContainsPrefix("breeze")).valueMap().toList()
     print(edges)
@@ -206,7 +206,7 @@ TextRegex matches the whole string, according to regex provided.
 
 .. code-block:: python
 
-    from janusgraph_python.core.attribute.Text import Text
+    from janusgraph_python.core.attribute.text import Text
 
     edges = g.E().has("reason", Text.textRegex('l[ov]*es\s*w[a-v]*')).valueMap().toList()
     print(edges)

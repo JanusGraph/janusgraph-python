@@ -45,13 +45,3 @@ class RelationIdentifier(object):
 
     def __hash__(self):
         return hash(self.relationID) if self.relationID is not None else 0
-
-    def toDict(self):
-        """ Dictify the relationID, with proper JanusGraph Identifier token.
-
-        Returns:
-
-        """
-        edge_json = dict()
-        edge_json["janusgraph:RelationIdentifier"] = self.__str__()
-        return edge_json

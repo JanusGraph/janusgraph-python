@@ -20,10 +20,10 @@ and any objects specific to JanusGraph.
 
 .. code-block:: python
 
-    from janusgraph_python.driver.ClientBuilder import JanusGraphClient
+    from janusgraph_python.driver.janusgraph_remote_connection_builder import JanusGraphRemoteConnectionBuilder
     from gremlin_python.structure.graph import Graph
     # Create JanusGraph connection providing required parameters.
-    connection = JanusGraphClient().connect(host="0.0.0.0", port="8182", traversal_source="g").get_connection()
+    connection = JanusGraphClient().connect(host="localhost", port=8182, traversal_source="g").get_connection()
     # Create Traversal with JanusGraph connection object
     g = Graph().traversal().withRemote(connection)
 
@@ -69,22 +69,24 @@ might run into unforeseen errors.
             return GraphSONUtil.typedValue(cls.GRAPHSON_BASE_TYPE, {'x': value.x, 'y': value.y}, cls.GRAPHSON_PREFIX)
 
     # Register Serializer and Deserializer with JanusGraphReader and Writer service
-    from janusgraph_python.structure.io.GraphsonWriter import JanusGraphSONWriter
-    from janusgraph_python.structure.io.GraphsonReader import JanusGraphSONReader
+    from janusgraph_python.structure.io.graphson.graphson_writer_builder import JanusGraphSONWriterBuilder
+    from janusgraph_python.structure.io.graphson.graphson_reader_builder import JanusGraphSONReaderBuilder
     from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
 
     # Registering it
-    reader_builder = JanusGraphSONReader().register_deserializer(MyType.GRAPHSON_BASE_TYPE, MyType)
-    reader = reader_builder.get()
+    reader_builder = JanusGraphSONReaderBuilder().register_deserializer(MyType.GRAPHSON_BASE_TYPE, MyType.GRAPHSON_PREFIX, MyType)
+    reader = reader_builder.build()
 
-    writer_builder = JanusGraphSONWriter().register_serializer(MyType, MyType)
-    writer = writer_builder.get()
+    # We are passing same objects as arguments in register_serializer because, we have single class for
+    # serializer/deserializer and also defining the Mock class
+    writer_builder = JanusGraphSONWriterBuilder().register_serializer(MyType, MyType)
+    writer = writer_builder.build()
 
     # Apply the connected reader and writer service while creating JanusGraph connection
     from gremlin_python.structure.graph import Graph
-    from janusgraph_python.driver.ClientBuilder import JanusGraphClient
+    from janusgraph_python.driver.janusgraph_remote_connection_builder import JanusGraphRemoteConnectionBuilder
 
-    client = JanusGraphClient().connect(host="0.0.0.0", port="8182",
+    client = JanusGraphClient().connect(host="localhost", port=8182,
                                         traversal_source="g", graphson_reader=reader, graphson_writer=writer)
     connection = client.get_connection()
     g = Graph().traversal().withRemote(client)
