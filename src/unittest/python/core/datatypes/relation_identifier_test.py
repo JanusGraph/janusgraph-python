@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import unittest
-from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
+from janusgraph_python.core.datatypes.relation_identifier import RelationIdentifier
 
 
 class TestRelationIdentifier(unittest.TestCase):
@@ -22,9 +22,9 @@ class TestRelationIdentifier(unittest.TestCase):
         id1 = "74q-9n4-b2t-cr4"
         id2 = "74q-9n4-b2t-cr6"
 
-        edgeID = RelationIdentifier(id1)
+        edge_id = RelationIdentifier(id1)
 
-        e1 = edgeID
+        e1 = edge_id
         e2 = RelationIdentifier(id1)
         e3 = RelationIdentifier(id2)
 

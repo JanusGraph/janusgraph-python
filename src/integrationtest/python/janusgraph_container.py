@@ -13,7 +13,7 @@
 # limitations under the License.
 
 import docker
-from janusgraph_python.driver.JanusGraphRemoteConnectionBuilder import JanusGraphRemoteConnectionBuilder
+from janusgraph_python.driver.janusgraph_remote_connection_builder import JanusGraphRemoteConnectionBuilder
 import time
 
 
@@ -29,8 +29,8 @@ class JanusGraphContainer(object):
 
         self.pull_image()
 
-        self.container = self.client.containers.run(self.BASE_IMAGE, detach=True, hostname="localhost",
-                                                    ports={8182: ("localhost", self.PORT)})
+        self.container = self.client.containers.run(self.BASE_IMAGE, detach=True, hostname=JanusGraphContainer.get_host_ip(),
+                                                    ports={8182: (JanusGraphContainer.get_host_ip(), self.PORT)})
 
         self.wait_for_container_to_start()
 
@@ -42,7 +42,7 @@ class JanusGraphContainer(object):
             try:
                 client = JanusGraphRemoteConnectionBuilder()
 
-                client.connect(host="localhost", port=8182,
+                client.connect(host=JanusGraphContainer.get_host_ip(), port=8182,
                                                 traversal_source="gods_traversal").get_connection()
 
                 client.close()
@@ -54,7 +54,8 @@ class JanusGraphContainer(object):
         image = self.client.images.pull(self.BASE_IMAGE)
         return image
 
-    def get_host_ip(self):
+    @staticmethod
+    def get_host_ip():
         return "localhost"
 
     def stop(self):

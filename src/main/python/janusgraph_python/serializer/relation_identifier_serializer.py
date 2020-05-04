@@ -13,7 +13,7 @@
 # limitations under the License.
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
-from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
+from ..core.datatypes.relation_identifier import RelationIdentifier
 
 
 class RelationIdentifierSerializer(object):
@@ -25,36 +25,36 @@ class RelationIdentifierSerializer(object):
     GRAPHSON_BASE_TYPE = "RelationIdentifier"
 
     @classmethod
-    def dictify(cls, relationID, writer):
+    def dictify(cls, relation_id, writer):
         """ Serializes RelationIdentifier object.
 
         Args:
-            relationID (RelationIdentifier): The RelationID to serialize.
+            relation_id (RelationIdentifier): The RelationID to serialize.
             writer:
 
         Returns:
             dict
         """
 
-        relationJSON = cls.__relationid_to_dict(relationID)
+        relation_json = cls.__relation_id_to_dict(relation_id)
 
-        serializedJSON = GraphSONUtil.typedValue(cls.GRAPHSON_BASE_TYPE, relationJSON, cls.GRAPHSON_PREFIX)
+        serialized_json = GraphSONUtil.typedValue(cls.GRAPHSON_BASE_TYPE, relation_json, cls.GRAPHSON_PREFIX)
 
-        return serializedJSON
+        return serialized_json
 
     @classmethod
-    def __relationid_to_dict(cls, relationID):
+    def __relation_id_to_dict(cls, relation_id):
         """
 
         Args:
-            relationID (RelationIdentifier):
+            relation_id (RelationIdentifier):
 
         Returns:
             dict
         """
 
-        relationIdDict = dict()
+        relation_dict = dict()
 
-        relationIdDict["relationId"] = relationID.relationID
+        relation_dict["relationId"] = relation_id.relationID
 
-        return relationIdDict
+        return relation_dict

@@ -12,8 +12,8 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from janusgraph_python.structure.io.graphson.GraphsonReaderBuilder import JanusGraphSONReaderBuilder
-from janusgraph_python.structure.io.graphson.GraphsonWriterBuilder import JanusGraphSONWriterBuilder
+from ..structure.io.graphson.graphson_writer_builder import JanusGraphSONWriterBuilder
+from ..structure.io.graphson.graphson_reader_builder import JanusGraphSONReaderBuilder
 
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
 
@@ -74,7 +74,7 @@ class JanusGraphRemoteConnectionBuilder(object):
         """
 
         Args:
-            reader (JanusGraphSONReader):
+            reader (JanusGraphSONReaderBuilder):
 
         Returns:
 
@@ -87,7 +87,7 @@ class JanusGraphRemoteConnectionBuilder(object):
         """
 
         Args:
-            writer (JanusGraphSONWriter):
+            writer (JanusGraphSONWriterBuilder):
 
         Returns:
 

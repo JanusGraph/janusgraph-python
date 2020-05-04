@@ -14,7 +14,7 @@
 
 
 import unittest
-from janusgraph_python.structure.io.graphson.GraphsonWriterBuilder import JanusGraphSONWriterBuilder
+from janusgraph_python.structure.io.graphson.graphson_writer_builder import JanusGraphSONWriterBuilder
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
 import json
 

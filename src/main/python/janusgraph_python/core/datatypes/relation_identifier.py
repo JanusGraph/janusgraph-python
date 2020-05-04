@@ -14,13 +14,13 @@
 
 
 class RelationIdentifier(object):
-    def __init__(self, relationID):
+    def __init__(self, relation_id):
         """ This class represents the RelationIdentifier object type which represents Edge IDs in JanusGraph.
 
         Args:
-            relationID (str): The string representation, "-" separated of Edge IDs.
+            relation_id (str): The string representation, "-" separated of Edge IDs.
         """
-        self.relationID = relationID
+        self.relationID = relation_id
 
     def __eq__(self, other):
         """ Overrides default equality method.
@@ -52,6 +52,6 @@ class RelationIdentifier(object):
         Returns:
 
         """
-        edgeID = dict()
-        edgeID["janusgraph:RelationIdentifier"] = self.__str__()
-        return edgeID
+        edge_json = dict()
+        edge_json["janusgraph:RelationIdentifier"] = self.__str__()
+        return edge_json

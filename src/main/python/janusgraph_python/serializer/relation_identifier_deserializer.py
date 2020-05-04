@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ..core.datatypes.RelationIdentifier import RelationIdentifier
+from ..core.datatypes.relation_identifier import RelationIdentifier
 
 
 class RelationIdentifierDeserializer(object):
@@ -22,17 +22,17 @@ class RelationIdentifierDeserializer(object):
     """
 
     @classmethod
-    def objectify(cls, graphsonObj, reader):
+    def objectify(cls, graphson_obj, reader):
         """ This method to de-serialize a RelationIdentifier into corresponding Python object.
 
         Args:
-            graphsonObj (dict): The serialized JSON returned from JanusGraph Server.
+            graphson_obj (dict): The serialized JSON returned from JanusGraph Server.
             reader: The reader class to use for de-serializing the JanusGraph Relation object.
 
         Returns:
             RelationIdentifier
         """
 
-        relationID = RelationIdentifier(str(graphsonObj["relationId"]))
+        relation_id = RelationIdentifier(str(graphson_obj["relationId"]))
 
-        return relationID
+        return relation_id

@@ -14,24 +14,24 @@
 
 import unittest
 import json
-from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
-from janusgraph_python.structure.io.graphson.GraphsonWriterBuilder import JanusGraphSONWriterBuilder
+from janusgraph_python.core.datatypes.relation_identifier import RelationIdentifier
+from janusgraph_python.structure.io.graphson.graphson_writer_builder import JanusGraphSONWriterBuilder
 
 
 class TestRelationIdentifierSerializer(unittest.TestCase):
 
     def test_relationID_serialization(self):
-        relationID = "74q-9n4-b2t-cr4"
+        relation_id = "74q-9n4-b2t-cr4"
 
-        edge = RelationIdentifier(relationID)
+        edge = RelationIdentifier(relation_id)
         writer = JanusGraphSONWriterBuilder().build()
 
-        graphSON = writer.writeObject(edge)
+        relation_graphson = writer.writeObject(edge)
 
-        expectedJSON = dict()
-        expectedJSON["@type"] = "janusgraph:RelationIdentifier"
-        expectedJSON["@value"] = {"relationId": relationID}
+        expected_json = dict()
+        expected_json["@type"] = "janusgraph:RelationIdentifier"
+        expected_json["@value"] = {"relationId": relation_id}
 
-        actualJSON = json.loads(graphSON)
+        actual_json = json.loads(relation_graphson)
 
-        self.assertEqual(expectedJSON, actualJSON)
+        self.assertEqual(expected_json, actual_json)

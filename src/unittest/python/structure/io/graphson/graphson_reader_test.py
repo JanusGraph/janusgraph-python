@@ -14,7 +14,7 @@
 
 
 import unittest
-from janusgraph_python.structure.io.graphson.GraphsonReaderBuilder import JanusGraphSONReaderBuilder
+from janusgraph_python.structure.io.graphson.graphson_reader_builder import JanusGraphSONReaderBuilder
 
 
 class MockDeserializer(object):
@@ -22,8 +22,8 @@ class MockDeserializer(object):
         pass
 
     @classmethod
-    def objectify(cls, graphsonObj, reader):
-        obj = Mock(**graphsonObj)
+    def objectify(cls, graphson_obj, reader):
+        obj = Mock(**graphson_obj)
         return obj
 
 
@@ -76,11 +76,11 @@ class TestGraphsonReader(unittest.TestCase):
         readerClass.register_deserializer(self.GRAPHSON_BASE_TYPE, self.GRAPHSON_PREFIX, deserializer)
         reader = readerClass.build()
 
-        mockJSON = dict()
-        mockJSON["@type"] = "janusgraph:MOCK"
-        mockJSON["@value"] = {"a": 1}
+        mock_json = dict()
+        mock_json["@type"] = "janusgraph:MOCK"
+        mock_json["@value"] = {"a": 1}
 
-        actualMockObj = reader.toObject(mockJSON)
-        expectedMockObj = Mock(a=1)
+        actual_mock_obj = reader.toObject(mock_json)
+        expected_mock_obj = Mock(a=1)
 
-        self.assertEqual(expectedMockObj, actualMockObj)
+        self.assertEqual(expected_mock_obj, actual_mock_obj)

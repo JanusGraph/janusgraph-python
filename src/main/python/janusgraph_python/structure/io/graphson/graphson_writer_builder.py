@@ -13,8 +13,9 @@
 # limitations under the License.
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONWriter
-from janusgraph_python.serializer.RelationIdentifierSerializer import RelationIdentifierSerializer
-from janusgraph_python.core.datatypes.RelationIdentifier import RelationIdentifier
+
+from ....serializer.relation_identifier_serializer import RelationIdentifierSerializer
+from ....core.datatypes.relation_identifier import RelationIdentifier
 
 
 class JanusGraphSONWriterBuilder(object):
@@ -37,9 +38,9 @@ class JanusGraphSONWriterBuilder(object):
             None
         """
 
-        janusSerializers = self.__build_serializers()
+        janus_serializers = self.__build_serializers()
 
-        self.serializers.update(janusSerializers)
+        self.serializers.update(janus_serializers)
 
     @staticmethod
     def __build_serializers():
@@ -49,11 +50,11 @@ class JanusGraphSONWriterBuilder(object):
         """
         # Currently the default serializers registered.
 
-        janusSerializers = {
+        janus_serializers = {
             RelationIdentifier: RelationIdentifierSerializer
         }
 
-        return janusSerializers
+        return janus_serializers
 
     def build(self):
         """ The method registers JanusGraph specific serializers into Gremlin GraphSON Writer class.
@@ -61,21 +62,23 @@ class JanusGraphSONWriterBuilder(object):
         Returns:
             GraphSONWriter
         """
+
         self.__register_default_serializers()
         self.writer = GraphSONWriter(self.serializers)
+
         return self.writer
 
-    def register_serializer(self, typeID, serializer):
+    def register_serializer(self, type_id, serializer):
         """ This method is used to registering any additional JanusGraph serializers.
 
         Args:
-            typeID (type):
+            type_id (type):
             serializer:
 
         Returns:
 
         """
 
-        self.serializers[typeID] = serializer
+        self.serializers[type_id] = serializer
 
         return self

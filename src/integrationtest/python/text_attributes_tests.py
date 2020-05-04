@@ -13,10 +13,10 @@
 # limitations under the License.
 
 import unittest
-from JanusGraphContainer import JanusGraphContainer
-from janusgraph_python.driver.JanusGraphRemoteConnectionBuilder import JanusGraphRemoteConnectionBuilder
+from janusgraph_container import JanusGraphContainer
+from janusgraph_python.driver.janusgraph_remote_connection_builder import JanusGraphRemoteConnectionBuilder
 from gremlin_python.structure.graph import Graph
-from janusgraph_python.core.attribute.Text import Text
+from janusgraph_python.core.attribute.text import Text
 
 
 class TestTextAttributes(unittest.TestCase):
