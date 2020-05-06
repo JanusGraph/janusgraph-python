@@ -17,8 +17,7 @@ from ..core.datatypes.relation_identifier import RelationIdentifier
 
 
 class RelationIdentifierSerializer(object):
-    """
-    This is serializer class being used to serialize RelationIdentifier object which is used by JanusGraph for edge ID
+    """This is serializer class being used to serialize RelationIdentifier object which is used by JanusGraph for edge ID
     """
 
     GRAPHSON_PREFIX = "janusgraph"
@@ -26,7 +25,7 @@ class RelationIdentifierSerializer(object):
 
     @classmethod
     def dictify(cls, relation_id, writer):
-        """ Serializes RelationIdentifier object.
+        """Serializes RelationIdentifier object.
 
         Args:
             relation_id (RelationIdentifier): The RelationID to serialize.
@@ -37,9 +36,7 @@ class RelationIdentifierSerializer(object):
         """
 
         relation_json = cls.__relation_id_to_dict(relation_id)
-
         serialized_json = GraphSONUtil.typedValue(cls.GRAPHSON_BASE_TYPE, relation_json, cls.GRAPHSON_PREFIX)
-
         return serialized_json
 
     @classmethod
@@ -54,7 +51,5 @@ class RelationIdentifierSerializer(object):
         """
 
         relation_dict = dict()
-
         relation_dict["relationId"] = relation_id.relationID
-
         return relation_dict

@@ -16,12 +16,11 @@ from gremlin_python.process.traversal import P
 
 
 class Text(object):
-    """ This class implements all the JanusGraph-based Text Predicates. """
+    """This class implements all the JanusGraph-based Text Predicates. """
 
     @staticmethod
     def textContains(value):
-        """
-        Implements JanusGraph's textContains functionality.
+        """Implements JanusGraph's textContains functionality.
         Returns true if (at least) one word inside the text string matches the query string
 
         Args:
@@ -35,8 +34,7 @@ class Text(object):
 
     @staticmethod
     def textContainsPrefix(value):
-        """
-        Implements JanusGraph's textContainsPrefix functionality.
+        """Implements JanusGraph's textContainsPrefix functionality.
         Returns true if (at least) one word inside the text string begins with the query string
 
         Args:
@@ -49,8 +47,7 @@ class Text(object):
 
     @staticmethod
     def textPrefix(value):
-        """
-        Implements JanusGraph's textPrefix functionality.
+        """Implements JanusGraph's textPrefix functionality.
         Returns true if the string value starts with the given query string
 
         Args:
@@ -63,8 +60,7 @@ class Text(object):
 
     @staticmethod
     def textContainsRegex(value):
-        """
-        Implements JanusGraph's textContainsRegex functionality.
+        """Implements JanusGraph's textContainsRegex functionality.
         Returns true if (at least) one word inside the text string matches the given regular expression
 
         Args:
@@ -78,8 +74,7 @@ class Text(object):
 
     @staticmethod
     def textRegex(value):
-        """
-        Implements JanusGraph's textRegex functionality.
+        """Implements JanusGraph's textRegex functionality.
         Returns if the string value matches the given regular expression in its entirety
 
         Args:
@@ -93,8 +88,7 @@ class Text(object):
 
     @staticmethod
     def textFuzzy(value):
-        """
-        Implements JanusGraph's textFuzzy functionality.
+        """Implements JanusGraph's textFuzzy functionality.
         Returns if the string value is similar to the given query string (based on Levenshtein edit distance)
 
         Args:
@@ -108,8 +102,7 @@ class Text(object):
 
     @staticmethod
     def textContainsFuzzy(value):
-        """
-        Implements JanusGraph's textContainsFuzzy functionality.
+        """Implements JanusGraph's textContainsFuzzy functionality.
         Returns true if (at least) one word inside the text string is similar to the query String
         (based on Levenshtein edit distance)
 

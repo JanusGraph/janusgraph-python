@@ -19,8 +19,7 @@ from ....core.datatypes.relation_identifier import RelationIdentifier
 
 
 class JanusGraphSONWriterBuilder(object):
-    """
-    This class registers JanusGraph specific serializers so that Python objects like RelationIdentifier
+    """Registers JanusGraph specific serializers so that Python objects like RelationIdentifier which
     can be interpreted on JanusGraph Server side.
     """
 
@@ -30,8 +29,7 @@ class JanusGraphSONWriterBuilder(object):
         self.writer = None
 
     def __register_default_serializers(self):
-        """
-            This method is used to register the Default serializers for JanusGraph's python client.
+        """This method is used to register the Default serializers for JanusGraph's python client.
             Currently the serializer registers RelationIdentifier classes.
 
         Returns:
@@ -39,12 +37,11 @@ class JanusGraphSONWriterBuilder(object):
         """
 
         janus_serializers = self.__build_serializers()
-
         self.serializers.update(janus_serializers)
 
     @staticmethod
     def __build_serializers():
-        """ The actual method which takes care of adding JanusGraph specific serializers.
+        """The actual method which takes care of adding JanusGraph specific serializers.
         Returns:
             dict
         """
@@ -57,7 +54,7 @@ class JanusGraphSONWriterBuilder(object):
         return janus_serializers
 
     def build(self):
-        """ The method registers JanusGraph specific serializers into Gremlin GraphSON Writer class.
+        """The method registers JanusGraph specific serializers into Gremlin GraphSON Writer class.
 
         Returns:
             GraphSONWriter
@@ -65,11 +62,10 @@ class JanusGraphSONWriterBuilder(object):
 
         self.__register_default_serializers()
         self.writer = GraphSONWriter(self.serializers)
-
         return self.writer
 
     def register_serializer(self, type_id, serializer):
-        """ This method is used to registering any additional JanusGraph serializers.
+        """This method is used to registering any additional JanusGraph serializers.
 
         Args:
             type_id (type):
@@ -80,5 +76,4 @@ class JanusGraphSONWriterBuilder(object):
         """
 
         self.serializers[type_id] = serializer
-
         return self

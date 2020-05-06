@@ -12,19 +12,19 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from pybuilder.core import use_plugin, init, Author
 from os import environ
+from pybuilder.core import use_plugin, init, Author
 
 authors = [Author("Debasish Kanhar", "dekanhar@in.ibm.com")]
-description = environ.get("description")
-copyright = environ.get("copyright")
-license = environ.get("license")
+description = environ.get("DESCRIPTION")
+copyright = environ.get("COPYRIGHT")
+license = environ.get("LICENSE")
 
-name = environ.get("name")
+name = environ.get("PROJECT_NAME")
 
-tinkerpop_version = environ.get("tinkerpop_version")
-janusgraph_version = environ.get("janusgraph_version")
-version = environ.get("version")
+tinkerpop_version = environ.get("TINKERPOP_VERSION")
+janusgraph_version = environ.get("JANUSGRAPH_VERSION")
+version = environ.get("PROJECT_VERSION")
 
 use_plugin("python.core")
 # the python unittest plugin allows running python's standard library unittests

@@ -17,7 +17,7 @@
 # Defaults
 docs=true
 build=true
-ENV_NAME=tempENV
+declare -r ENV_NAME=tempENV
 
 while getopts ":d:b:p:" opt; do
   case "${opt}" in
@@ -39,23 +39,20 @@ done
 
 if [[ -z "${1:-}" ]]; then
   echo "Usage $(basename $0) -d [Build Docs?] -b [Build Lib?] -p [Python Executable Path]"
-  echo "Building with defaults $0 -d true -b true -i false -p (default python)"
+  echo "Building with defaults $0 -d true -b true -p (default python)"
 fi
 
 if [[ -z "${PYTHON_PATH+x}" ]]; then
   # If -p parameter isn't provided, we check if pre perquisite python is installed or not.
   if command -v python3 --version &>/dev/null; then
-    echo "Pre-requisite Python already installed. 'python3' command works"
     export PYTHON_PATH=python3
   else
-    echo "Python isn't installed because python3 command doesn't work. Exiting"
+    echo "python3 command doesn't work. Exiting"
     exit 1
   fi
 fi
 
-if command -v virtualenv --version &>/dev/null; then
-  echo "Pre-requisite virtualenv already installed."
-else
+if ! command -v virtualenv --version &>/dev/null; then
   echo "Pre-requisite virtualenv isn't installed on system. Please see docs for help in installation of pre-requisites"
   exit 1
 fi

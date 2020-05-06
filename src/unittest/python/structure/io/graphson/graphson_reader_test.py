@@ -71,14 +71,15 @@ class TestGraphsonReader(unittest.TestCase):
     def test_mock_deserializer(self):
         deserializer = MockDeserializer
 
-        readerClass = JanusGraphSONReaderBuilder()
+        reader_class = JanusGraphSONReaderBuilder()
 
-        readerClass.register_deserializer(self.GRAPHSON_BASE_TYPE, self.GRAPHSON_PREFIX, deserializer)
-        reader = readerClass.build()
+        reader_class.register_deserializer(self.GRAPHSON_BASE_TYPE, self.GRAPHSON_PREFIX, deserializer)
+        reader = reader_class.build()
 
-        mock_json = dict()
-        mock_json["@type"] = "janusgraph:MOCK"
-        mock_json["@value"] = {"a": 1}
+        mock_json = {
+            "@type": "janusgraph:MOCK",
+            "@value": {"a": 1}
+        }
 
         actual_mock_obj = reader.toObject(mock_json)
         expected_mock_obj = Mock(a=1)

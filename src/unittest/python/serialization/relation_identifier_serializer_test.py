@@ -28,9 +28,10 @@ class TestRelationIdentifierSerializer(unittest.TestCase):
 
         relation_graphson = writer.writeObject(edge)
 
-        expected_json = dict()
-        expected_json["@type"] = "janusgraph:RelationIdentifier"
-        expected_json["@value"] = {"relationId": relation_id}
+        expected_json = {
+            "@type": "janusgraph:RelationIdentifier",
+            "@value": {"relationId": relation_id}
+        }
 
         actual_json = json.loads(relation_graphson)
 

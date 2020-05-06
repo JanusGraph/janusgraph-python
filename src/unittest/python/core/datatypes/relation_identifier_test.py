@@ -22,11 +22,10 @@ class TestRelationIdentifier(unittest.TestCase):
         id1 = "74q-9n4-b2t-cr4"
         id2 = "74q-9n4-b2t-cr6"
 
-        edge_id = RelationIdentifier(id1)
-
-        e1 = edge_id
+        e1 = RelationIdentifier(id1)
         e2 = RelationIdentifier(id1)
         e3 = RelationIdentifier(id2)
 
         self.assertEqual(e1, e2)
         self.assertNotEqual(e1, e3)
+        self.assertNotEqual(e2, e3)

@@ -24,9 +24,10 @@ class TestRelationIdentifierDeserialization(unittest.TestCase):
 
         reader = JanusGraphSONReaderBuilder().build()
 
-        rel_id_json = dict()
-        rel_id_json["@type"] = "janusgraph:RelationIdentifier"
-        rel_id_json["@value"] = {"relationId": relation_id}
+        rel_id_json = {
+            "@type": "janusgraph:RelationIdentifier",
+            "@value": {"relationId": relation_id}
+        }
 
         expected_relation = reader.toObject(rel_id_json)
         actual_relation = RelationIdentifier(relation_id)

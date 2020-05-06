@@ -14,9 +14,10 @@
 
 
 import unittest
+import json
+
 from janusgraph_python.structure.io.graphson.graphson_writer_builder import JanusGraphSONWriterBuilder
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
-import json
 
 
 class X(object):
@@ -61,26 +62,26 @@ class MockSerializer(object):
 class TestGraphsonWriter(unittest.TestCase):
 
     def test_mock_serializer(self):
-        # Create Mock Object
-        mockObj = X
+        mock_obj_type = X
+
         # Create Mock object's serializer
         serializer = MockSerializer
 
-        writerClass = JanusGraphSONWriterBuilder()
+        writer_class = JanusGraphSONWriterBuilder()
 
         # Register the serializer and object. and build it.
-        writerClass.register_serializer(mockObj, serializer)
-        writer = writerClass.build()
+        writer_class.register_serializer(mock_obj_type, serializer)
+        writer = writer_class.build()
 
         # Test the updated writer build.
-        mockObj = X()
+        mock_obj = X()
         # Serialize mock object into GSON
-        mockGSON = writer.writeObject(mockObj)
+        mock_gson = writer.writeObject(mock_obj)
 
-        # Retrive actual serialization from MockSerializer
-        mockSer = MockSerializer().serialize(mockObj)
+        # Retrieve actual serialization from MockSerializer
+        mock_ser = MockSerializer().serialize(mock_obj)
 
-        expectedJSON = json.loads(mockGSON)
-        actualJSON = mockSer.get_serialized_json()
+        expected_json = json.loads(mock_gson)
+        actual_json = mock_ser.get_serialized_json()
 
-        self.assertEqual(expectedJSON, actualJSON)
+        self.assertEqual(expected_json, actual_json)

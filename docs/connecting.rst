@@ -1,6 +1,6 @@
-=========================
+========================
 Connecting to JanusGraph
-=========================
+========================
 
 The library provides a client to connect to JanusGraph running in
 Gremlin Server mode.

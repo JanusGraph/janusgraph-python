@@ -48,5 +48,5 @@ class TestDocTraversals(unittest.TestCase):
 
         firstBattlePlace = self.g.V().has("name", "hercules").outE("battled").order().by("time").values("place").next()
 
-        self.assertEqual(firstBattlePlace.getLatitude(), 38.1)
-        self.assertEqual(firstBattlePlace.getLongitude(), 23.7)
+        self.assertAlmostEqual(firstBattlePlace.getLatitude(), 38.1)
+        self.assertAlmostEqual(firstBattlePlace.getLongitude(), 23.7)

@@ -12,20 +12,15 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-import sys
 import os
+import sys
 
 sys.path.append(os.path.join(os.path.dirname(__file__), '../'))
 
-project_version = os.environ.get("version")
-project_name = os.environ.get("description")
-dist_name = os.environ.get("name")
-copyright = os.environ.get("copyright")
-#
-# from constants import version as project_version
-# from constants import description as project_name
-# from constants import name as dist_name
-# from constants import copyright
+project_version = os.environ.get("PROJECT_VERSION")
+project_name = os.environ.get("DESCRIPTION")
+dist_name = os.environ.get("PROJECT_NAME")
+copyright = os.environ.get("COPYRIGHT")
 
 # All configuration values have a default; values that are commented out
 # serve to show the default.
