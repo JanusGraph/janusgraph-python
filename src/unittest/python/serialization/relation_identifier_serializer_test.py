@@ -20,19 +20,17 @@ from janusgraph_python.structure.io.graphson.graphson_writer_builder import Janu
 
 class TestRelationIdentifierSerializer(unittest.TestCase):
 
-    def test_relationID_serialization(self):
+    def test_relation_id_serialization(self):
         relation_id = "74q-9n4-b2t-cr4"
 
         edge = RelationIdentifier(relation_id)
         writer = JanusGraphSONWriterBuilder().build()
 
-        relation_graphson = writer.writeObject(edge)
+        actual_json_str = writer.writeObject(edge)
 
-        expected_json = {
+        expected_json_str = json.dumps({
             "@type": "janusgraph:RelationIdentifier",
             "@value": {"relationId": relation_id}
-        }
+        }, separators=(',', ':'))
 
-        actual_json = json.loads(relation_graphson)
-
-        self.assertEqual(expected_json, actual_json)
+        self.assertEqual(actual_json_str, expected_json_str)

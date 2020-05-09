@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+import json
 import unittest
 from janusgraph_python.structure.io.graphson.graphson_reader_builder import JanusGraphSONReaderBuilder
 from janusgraph_python.core.datatypes.relation_identifier import RelationIdentifier
@@ -24,12 +25,12 @@ class TestRelationIdentifierDeserialization(unittest.TestCase):
 
         reader = JanusGraphSONReaderBuilder().build()
 
-        rel_id_json = {
+        rel_id_json_str = json.dumps({
             "@type": "janusgraph:RelationIdentifier",
             "@value": {"relationId": relation_id}
-        }
+        }, separators=(",", ":"))
 
-        expected_relation = reader.toObject(rel_id_json)
-        actual_relation = RelationIdentifier(relation_id)
+        actual_relation_id = reader.readObject(rel_id_json_str)
+        expected_relation_id = RelationIdentifier(relation_id)
 
-        self.assertEqual(expected_relation, actual_relation)
+        self.assertEqual(actual_relation_id, expected_relation_id)

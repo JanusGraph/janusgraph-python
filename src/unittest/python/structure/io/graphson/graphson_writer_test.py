@@ -13,8 +13,8 @@
 # limitations under the License.
 
 
-import unittest
 import json
+import unittest
 
 from janusgraph_python.structure.io.graphson.graphson_writer_builder import JanusGraphSONWriterBuilder
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
@@ -49,15 +49,6 @@ class MockSerializer(object):
         cls.serializedJSON = serializedJSON
         return serializedJSON
 
-    def serialize(self, obj):
-        value = obj.objectify()
-        serializedJSON = GraphSONUtil.typedValue(self.GRAPHSON_BASE_TYPE, value, self.GRAPHSON_PREFIX)
-        self.serializedJSON = serializedJSON
-        return self
-
-    def get_serialized_json(self):
-        return self.serializedJSON
-
 
 class TestGraphsonWriter(unittest.TestCase):
 
@@ -75,13 +66,11 @@ class TestGraphsonWriter(unittest.TestCase):
 
         # Test the updated writer build.
         mock_obj = X()
-        # Serialize mock object into GSON
-        mock_gson = writer.writeObject(mock_obj)
+        # Serialize mock object into JSON String
+        expected_json_str = writer.writeObject(mock_obj)
 
-        # Retrieve actual serialization from MockSerializer
-        mock_ser = MockSerializer().serialize(mock_obj)
+        # Retrieve actual Serialized dict using mock serializer
+        actual_dict = MockSerializer().dictify(mock_obj, writer)
+        actual_json_str = json.dumps(actual_dict, separators=(",", ":"))
 
-        expected_json = json.loads(mock_gson)
-        actual_json = mock_ser.get_serialized_json()
-
-        self.assertEqual(expected_json, actual_json)
+        self.assertEqual(actual_json_str, expected_json_str)

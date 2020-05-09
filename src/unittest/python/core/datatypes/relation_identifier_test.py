@@ -18,7 +18,7 @@ from janusgraph_python.core.datatypes.relation_identifier import RelationIdentif
 
 class TestRelationIdentifier(unittest.TestCase):
 
-    def test_relationID_equality(self):
+    def test_relation_id_equality(self):
         id1 = "74q-9n4-b2t-cr4"
         id2 = "74q-9n4-b2t-cr6"
 

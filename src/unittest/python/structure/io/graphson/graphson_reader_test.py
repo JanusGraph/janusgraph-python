@@ -13,6 +13,7 @@
 # limitations under the License.
 
 
+import json
 import unittest
 from janusgraph_python.structure.io.graphson.graphson_reader_builder import JanusGraphSONReaderBuilder
 
@@ -76,12 +77,12 @@ class TestGraphsonReader(unittest.TestCase):
         reader_class.register_deserializer(self.GRAPHSON_BASE_TYPE, self.GRAPHSON_PREFIX, deserializer)
         reader = reader_class.build()
 
-        mock_json = {
+        mock_json_str = json.dumps({
             "@type": "janusgraph:MOCK",
             "@value": {"a": 1}
-        }
+        }, separators=(",", ":"))
 
-        actual_mock_obj = reader.toObject(mock_json)
+        actual_mock_obj = reader.readObject(mock_json_str)
         expected_mock_obj = Mock(a=1)
 
         self.assertEqual(expected_mock_obj, actual_mock_obj)

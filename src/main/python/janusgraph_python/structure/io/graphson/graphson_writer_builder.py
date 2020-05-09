@@ -64,16 +64,16 @@ class JanusGraphSONWriterBuilder(object):
         self.writer = GraphSONWriter(self.serializers)
         return self.writer
 
-    def register_serializer(self, type_id, serializer):
+    def register_serializer(self, type_, serializer):
         """This method is used to registering any additional JanusGraph serializers.
 
         Args:
-            type_id (type):
+            type_ (type):
             serializer:
 
         Returns:
 
         """
 
-        self.serializers[type_id] = serializer
+        self.serializers[type_] = serializer
         return self

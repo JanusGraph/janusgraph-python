@@ -69,7 +69,7 @@ class JanusGraphSONReaderBuilder(object):
 
         Args:
             type_id (str): The identifier to be used to register the De-serializer against.
-            prefix (str): The Namespace to use in typeID
+            prefix (str): The prefix to use in typeID
             deserializer: The De-serializer class.
 
         Returns:
