@@ -21,12 +21,20 @@ python:
 - '3.7'
 - '3.8'
 
+os:
+  - linux
+  - osx
+
 install:
   - pip install virtualenv
   # Installs virtualenv which is pre requisite for building this library. All other dependencies will be installed inside
 
 script:
   - bash build.sh
+
+jobs:
+  allow_failures:
+  - python: '3.4'
 
 # Deployment to PyPi configuration
 # TODO: Update User and Password credentials for deploying to PyPi
