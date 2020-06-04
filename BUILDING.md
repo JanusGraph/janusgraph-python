@@ -13,6 +13,12 @@
     -   Python is added to system path. Make sure, the user can run the following commands from command line:
         -   python3/ python3.4/ python3.5/ python3.6 / python3.7 / python3.8 on Unix machines.
         -   python on Windows machines.
+        
+    -   Make sure following (specific to version of python version installed) works:
+        -   python3 --version
+        -   python3.4 --version
+        -   python3.5 --version
+        -   python3.6 --version
 
     -   Virtualenv needs to be installed. See [PyPi Page](https://pypi.org/project/virtualenv/) for installation steps.
 

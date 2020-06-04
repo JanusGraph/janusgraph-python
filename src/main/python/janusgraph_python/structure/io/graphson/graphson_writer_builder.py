@@ -14,7 +14,7 @@
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONWriter
 
-from ....serializer.relation_identifier_serializer import RelationIdentifierSerializer
+from .relation_identifier_serializer import RelationIdentifierSerializer
 from ....core.datatypes.relation_identifier import RelationIdentifier
 
 

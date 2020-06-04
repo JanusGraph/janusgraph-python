@@ -10,22 +10,11 @@ as its core dependency with additional support for JanusGraph-specific types and
 
 ### Pre-Requisites
 
-The library has been tested with following Python versions:
+The following Python versions are supported by Library:
 
 -   [Python 3.4](https://www.python.org/downloads/release/python-340/).
 -   [Python 3.5](https://www.python.org/downloads/release/python-350/).
 -   [Python 3.6](https://www.python.org/downloads/release/python-360/).
-
-Once the required Python version is installed on system, please note the version number and the Python added 
-to Path. Make a note of the number, as that will be required during building of Library (on UNIX)
-Try running either of following commands on CLI, and make a note of the version which works:
-
--   python3 --version
--   python3.4 --version
--   python3.5 --version
--   python3.6 --version
-
-**NOTE**: The above checks aren't needed if installing the drivers from PyPi
 
 ### Building Library
 

@@ -12,7 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from ..core.datatypes.relation_identifier import RelationIdentifier
+from ....core.datatypes.relation_identifier import RelationIdentifier
 
 
 class RelationIdentifierDeserializer(object):

@@ -13,9 +13,8 @@
 # limitations under the License.
 
 from gremlin_python.structure.io.graphsonV3d0 import GraphSONReader
-from gremlin_python.structure.io.graphsonV3d0 import GraphSONUtil
 
-from ....serializer.relation_identifier_deserializer import RelationIdentifierDeserializer
+from .relation_identifier_deserializer import RelationIdentifierDeserializer
 
 
 class JanusGraphSONReaderBuilder(object):
@@ -64,18 +63,16 @@ class JanusGraphSONReaderBuilder(object):
         self.reader = GraphSONReader(self.deserializers)
         return self.reader
 
-    def register_deserializer(self, type_id, prefix, deserializer):
+    def register_deserializer(self, type_id, deserializer):
         """This method is used to registering any additional JanusGraph de-serializers.
 
         Args:
             type_id (str): The identifier to be used to register the De-serializer against.
-            prefix (str): The prefix to use in typeID
             deserializer: The De-serializer class.
 
         Returns:
 
         """
 
-        object_identifier = GraphSONUtil.formatType(prefix, type_id)
-        self.deserializers[object_identifier] = deserializer
+        self.deserializers[type_id] = deserializer
         return self
