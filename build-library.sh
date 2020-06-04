@@ -32,8 +32,13 @@ source "${python_path}"
 
 echo "Python being used is " $(python -V)
 
-# For building the library
-pyb -v
+{
+    # For building the library
+    pyb -v
+} || {
+    echo "Build of library core failed"
+    exit -1
+}
 
 case $(uname -s) in
     MINGW*)     source deactivate;;

@@ -32,9 +32,14 @@ source "${python_path}"
 
 # Auto-generate .rst files from docstrings of Python files. The .rst files are then used to generate html files
 # for API docs
-sphinx-apidoc -o docs/ src/main/python/janusgraph_python > /dev/null
-# Generate HTML files from .rst files
-pyb sphinx_generate_documentation
+{
+    sphinx-apidoc -o docs/ src/main/python/janusgraph_python > /dev/null
+    # Generate HTML files from .rst files
+    pyb sphinx_generate_documentation
+} || {
+    echo "Build of docs failed"
+    exit -1
+}
 
 cd docs
 

@@ -64,6 +64,7 @@ echo "Created virtualenv with -p=${PYTHON_PATH}"
 source constants.sh
 
 echo "Sourced constants from constants.sh"
+echo "Building library with python " $(python -V)
 
 chmod +x before-script.sh
 ./before-script.sh "${ENV_NAME}"
@@ -71,13 +72,23 @@ chmod +x before-script.sh
 if [[ "${docs}" == "true" ]]; then
   echo "Building documentation"
   chmod +x build-docs.sh
-  ./build-docs.sh "${ENV_NAME}"
+  {
+    ./build-docs.sh "${ENV_NAME}"
+  } || {
+    echo "Docs build failed. Exiting build"
+    exit -1
+  }
 fi
 
 if [[ "${build}" == "true" ]]; then
   echo "Building library"
   chmod +x build-library.sh
-  ./build-library.sh "${ENV_NAME}"
+  {
+    ./build-library.sh "${ENV_NAME}"
+  } || {
+    echo "Exiting build as library build failed"
+    exit -1
+  }
 fi
 
 # Remove all files for temp environment, as that is already deactivated
