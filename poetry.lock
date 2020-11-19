@@ -1,0 +1,79 @@
+[[package]]
+name = "aenum"
+version = "2.2.4"
+description = "Advanced Enumerations (compatible with Python's stdlib Enum), NamedTuples, and NamedConstants"
+category = "main"
+optional = false
+python-versions = "*"
+
+[[package]]
+name = "gremlinpython"
+version = "3.4.4"
+description = "Gremlin-Python for Apache TinkerPop"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+aenum = ">=1.4.5"
+isodate = ">=0.6.0"
+six = ">=1.10.0"
+tornado = ">=4.4.1,<5.0"
+
+[[package]]
+name = "isodate"
+version = "0.6.0"
+description = "An ISO 8601 date/time/duration parser and formatter"
+category = "main"
+optional = false
+python-versions = "*"
+
+[package.dependencies]
+six = "*"
+
+[[package]]
+name = "six"
+version = "1.15.0"
+description = "Python 2 and 3 compatibility utilities"
+category = "main"
+optional = false
+python-versions = ">=2.7, !=3.0.*, !=3.1.*, !=3.2.*"
+
+[[package]]
+name = "tornado"
+version = "4.5.3"
+description = "Tornado is a Python web framework and asynchronous networking library, originally developed at FriendFeed."
+category = "main"
+optional = false
+python-versions = "*"
+
+[metadata]
+lock-version = "1.1"
+python-versions = "^3.8"
+content-hash = "117623672028c04e10c620c95e3ee925a47c5dec9825abee4ed85c37690530b7"
+
+[metadata.files]
+aenum = [
+    {file = "aenum-2.2.4-py2-none-any.whl", hash = "sha256:85adabd63183d283250bf7acd9fa23c7e45b1c8d1efbb84b233160f3c438dc18"},
+    {file = "aenum-2.2.4-py3-none-any.whl", hash = "sha256:bcb4fd350d36af336b6b5898e5d89f76344621d9c1b2de69c81acf1d3e6b1145"},
+    {file = "aenum-2.2.4.tar.gz", hash = "sha256:81828d1fbe20b6b188d75b21a0fa936d7d929d839ef843ef385d9c2a97082864"},
+]
+gremlinpython = [
+    {file = "gremlinpython-3.4.4-py2.py3-none-any.whl", hash = "sha256:7e7876dca4de88c1c7522b503ee487d3138faae569756bc23d661e22ad6cc29f"},
+    {file = "gremlinpython-3.4.4.tar.gz", hash = "sha256:80136d10d7af60fae8bfb5f9f84b02884e582485d8889f604e531a546c393afa"},
+]
+isodate = [
+    {file = "isodate-0.6.0-py2.py3-none-any.whl", hash = "sha256:aa4d33c06640f5352aca96e4b81afd8ab3b47337cc12089822d6f322ac772c81"},
+    {file = "isodate-0.6.0.tar.gz", hash = "sha256:2e364a3d5759479cdb2d37cce6b9376ea504db2ff90252a2e5b7cc89cc9ff2d8"},
+]
+six = [
+    {file = "six-1.15.0-py2.py3-none-any.whl", hash = "sha256:8b74bedcbbbaca38ff6d7491d76f2b06b3592611af620f8426e82dddb04a5ced"},
+    {file = "six-1.15.0.tar.gz", hash = "sha256:30639c035cdb23534cd4aa2dd52c3bf48f06e5f4a941509c8bafd8ce11080259"},
+]
+tornado = [
+    {file = "tornado-4.5.3-cp35-cp35m-win32.whl", hash = "sha256:92b7ca81e18ba9ec3031a7ee73d4577ac21d41a0c9b775a9182f43301c3b5f8e"},
+    {file = "tornado-4.5.3-cp35-cp35m-win_amd64.whl", hash = "sha256:b36298e9f63f18cad97378db2222c0e0ca6a55f6304e605515e05a25483ed51a"},
+    {file = "tornado-4.5.3-cp36-cp36m-win32.whl", hash = "sha256:ab587996fe6fb9ce65abfda440f9b61e4f9f2cf921967723540679176915e4c3"},
+    {file = "tornado-4.5.3-cp36-cp36m-win_amd64.whl", hash = "sha256:5ef073ac6180038ccf99411fe05ae9aafb675952a2c8db60592d5daf8401f803"},
+    {file = "tornado-4.5.3.tar.gz", hash = "sha256:6d14e47eab0e15799cf3cdcc86b0b98279da68522caace2bd7ce644287685f0a"},
+]
