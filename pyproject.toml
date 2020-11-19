@@ -3,7 +3,10 @@ name = "janusgraph-python"
 version = "0.1.0"
 description = "JanusGraph Python driver"
 authors = ["Ace <ace@mirato360.com>"]
-license = "APACHE-2.0"
+license = "Apache-2.0"
+packages = [
+    { include = "janusgraph_python", from = "janusgraph_python/src/main/python" },
+]
 
 [tool.poetry.dependencies]
 python = "^3.8"
