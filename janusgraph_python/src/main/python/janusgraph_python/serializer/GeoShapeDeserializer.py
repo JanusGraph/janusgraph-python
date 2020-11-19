@@ -62,7 +62,7 @@ class GeoShapeDeserializer(object):
 
                         circle = cls.__deserialize_circle_from_coordinates(coordinates, radius)
 
-                        return circle.__str__()
+                        return circle
 
                     else:
                         raise NotImplementedError("Currently implemented De-serialization \
@@ -77,7 +77,7 @@ class GeoShapeDeserializer(object):
             coordinates = graphsonObj["coordinates"]
             point = cls.__deserialize_points_from_coordinates(coordinates)
 
-            return point.__str__()
+            return point
 
     @classmethod
     def __deserialize_points_from_coordinates(cls, coordinates):
