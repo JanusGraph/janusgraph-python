@@ -38,7 +38,7 @@ jobs:
       run: |
         python -m build
     - name: Store the distribution package
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: python-package-distribution
         path: dist/
