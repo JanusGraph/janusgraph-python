@@ -47,6 +47,16 @@ class Text(object):
         return _JanusGraphP("textContains", *args)
     
     @staticmethod
+    def text_not_contains(*args):
+        """
+        Is true if no words inside the text string match the query string.
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotContains", *args)
+
+    @staticmethod
     def text_contains_prefix(*args):
         """
         Is true if (at least) one word inside the text string begins with the query string.
@@ -57,6 +67,16 @@ class Text(object):
         return _JanusGraphP("textContainsPrefix", *args)
     
     @staticmethod
+    def text_not_contains_prefix(*args):
+        """
+        Is true if no words inside the text string begin with the query string.
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotContainsPrefix", *args)
+
+    @staticmethod
     def text_contains_regex(*args):
         """
         Is true if (at least) one word inside the text string matches the given regular expression.
@@ -66,6 +86,16 @@ class Text(object):
         """
         return _JanusGraphP("textContainsRegex", *args)
     
+    @staticmethod
+    def text_not_contains_regex(*args):
+        """
+        Is true if no words inside the text string match the given regular expression.
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotContainsRegex", *args)
+
     @staticmethod
     def text_contains_fuzzy(*args):
         """
@@ -78,6 +108,37 @@ class Text(object):
         return _JanusGraphP("textContainsFuzzy", *args)
     
     @staticmethod
+    def text_not_contains_fuzzy(*args):
+        """
+        Is true if no words inside the text string are similar to the query string
+        (based on Levenshtein edit distance).
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotContainsFuzzy", *args)
+
+    @staticmethod
+    def text_contains_phrase(*args):
+        """
+        Is true if the text string does contain the sequence of words in the query string.
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textContainsPhrase", *args)
+
+    @staticmethod
+    def text_not_contains_phrase(*args):
+        """
+        Is true if the text string does not contain the sequence of words in the query string.
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotContainsPhrase", *args)
+
+    @staticmethod
     def text_prefix(*args):
         """
         Is true if the string value starts with the given query string.
@@ -87,6 +148,16 @@ class Text(object):
         """
         return _JanusGraphP("textPrefix", *args)
     
+    @staticmethod
+    def text_not_prefix(*args):
+        """
+        Is true if the string value does not start with the given query string.
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotPrefix", *args)
+
     @staticmethod
     def text_regex(*args):
         """
@@ -98,6 +169,16 @@ class Text(object):
         return _JanusGraphP("textRegex", *args)
 
     @staticmethod
+    def text_not_regex(*args):
+        """
+        Is true if the string value does not match the given regular expression in its entirety.
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotRegex", *args)
+
+    @staticmethod
     def text_fuzzy(*args):
         """
         Is true if the string value is similar to the given query string (based on Levenshtein edit distance).
@@ -106,6 +187,16 @@ class Text(object):
         :return The text predicate.
         """
         return _JanusGraphP("textFuzzy", *args)
+
+    @staticmethod
+    def text_not_fuzzy(*args):
+        """
+        Is true if the string value is not similar to the given query string (based on Levenshtein edit distance).
+
+        :param query: string, The query to search.
+        :return The text predicate.
+        """
+        return _JanusGraphP("textNotFuzzy", *args)
 
 class RelationIdentifier(object):
     _TO_STRING_DELIMITER = '-'

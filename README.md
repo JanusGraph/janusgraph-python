@@ -66,6 +66,7 @@ of JanusGraph-Python:
 | JanusGraph-Python | JanusGraph             |
 | ----------------- | ---------------------- |
 | 1.0.z             | 1.0.z                  |
+| 1.1.z             | 1.1.z                  |
 
 While it should also be possible to use JanusGraph-Python with other versions of
 JanusGraph than mentioned here, compatibility is not tested and some
