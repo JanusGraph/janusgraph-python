@@ -37,6 +37,7 @@ class _TextTests(object):
             param('shouldNotBeFound', 3),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_not_contains_given_search_text(self, search_text, expected_count):
         count = self.g.E().has('reason', Text.text_not_contains(search_text)).count().next()
         assert count == expected_count
@@ -61,6 +62,7 @@ class _TextTests(object):
             param('shouldNotBeFound', 3),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_contains_not_prefix_given_search_text(self, search_text, expected_count):
         count = self.g.E().has('reason', Text.text_not_contains_prefix(search_text)).count().next()
         assert count == expected_count
@@ -85,6 +87,7 @@ class _TextTests(object):
             param('shouldNotBeFound', 3),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_not_contains_regex_given_search_text(self, search_text, expected_count):
         count = self.g.E().has('reason', Text.text_not_contains_regex(search_text)).count().next()
         assert count == expected_count
@@ -107,6 +110,7 @@ class _TextTests(object):
             param('shouldNotBeFound', 3),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_not_contains_fuzzy_given_search_text(self, search_text, expected_count):
         count = self.g.E().has('reason', Text.text_not_contains_fuzzy(search_text)).count().next()
         assert count == expected_count
@@ -120,6 +124,7 @@ class _TextTests(object):
             param('should not be found', 0),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_contains_phrase_given_search_text(self, search_text, expected_count):
         count = self.g.E().has('reason', Text.text_contains_phrase(search_text)).count().next()
         assert count == expected_count
@@ -133,6 +138,7 @@ class _TextTests(object):
             param('should not be found', 3),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_not_contains_phrase_given_search_text(self, search_text, expected_count):
         count = self.g.E().has('reason', Text.text_not_contains_phrase(search_text)).count().next()
         assert count == expected_count
@@ -157,6 +163,7 @@ class _TextTests(object):
             param('shouldNotBeFound', 12),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_not_prefix_given_search_text(self, search_text, expected_count):
         count = self.g.V().has('name', Text.text_not_prefix(search_text)).count().next()
         assert count == expected_count
@@ -181,6 +188,7 @@ class _TextTests(object):
             param('shouldNotBeFound', 12),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_not_regex_given_search_text(self, search_text, expected_count):
         count = self.g.V().has('name', Text.text_not_regex(search_text)).count().next()
         assert count == expected_count
@@ -205,6 +213,7 @@ class _TextTests(object):
             param('shouldNotBeFound', 12),
         ]
     )
+    @mark.minimum_janusgraph_version("1.1.0")
     def test_text_not_fuzzy_given_search_text(self, search_text, expected_count):
         count = self.g.V().has('name', Text.text_not_fuzzy(search_text)).count().next()
         assert count == expected_count
