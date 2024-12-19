@@ -12,10 +12,16 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-from pytest import fixture
+from pytest import fixture, mark
 
 from integration.RelationIdentifier_test import _RelationIdentifierSerializer, _RelationIdentifierDeserializer
 from integration.Text_test import _TextTests
+from ..conftest import JANUSGRAPH_VERSION_PARAMS
+
+# parametrize all integration tests to run against various JanusGraph versions
+pytestmark = mark.parametrize(
+   "graph_connection_graphson", JANUSGRAPH_VERSION_PARAMS, indirect=True
+)
 
 class TestGraphSONRelationIdentifierSerializer(_RelationIdentifierSerializer):
     @fixture(autouse=True)

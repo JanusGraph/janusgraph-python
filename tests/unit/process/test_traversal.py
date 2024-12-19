@@ -219,12 +219,21 @@ class TestText(object):
         'predicate,expected',
         [
             param(Text.text_contains('John'), 'textContains(John)', id='text_contains'),
+            param(Text.text_not_contains('John'), 'textNotContains(John)', id='text_not_contains'),
             param(Text.text_contains_prefix('John'), 'textContainsPrefix(John)', id='text_contains_prefix'),
+            param(Text.text_not_contains_prefix('John'), 'textNotContainsPrefix(John)', id='text_not_contains_prefix'),
             param(Text.text_contains_fuzzy('Juhn'), 'textContainsFuzzy(Juhn)', id='text_contains_fuzzy'),
+            param(Text.text_not_contains_fuzzy('Juhn'), 'textNotContainsFuzzy(Juhn)', id='text_not_contains_fuzzy'),
             param(Text.text_contains_regex('.*hn.*'), 'textContainsRegex(.*hn.*)', id='text_contains_regex'),
+            param(Text.text_not_contains_regex('.*hn.*'), 'textNotContainsRegex(.*hn.*)', id='text_not_contains_regex'),
+            param(Text.text_contains_phrase('John Doe'), 'textContainsPhrase(John Doe)', id='text_contains_phrase'),
+            param(Text.text_not_contains_phrase('John Doe'), 'textNotContainsPhrase(John Doe)', id='text_not_contains_phrase'),
             param(Text.text_fuzzy('Juhn'), 'textFuzzy(Juhn)', id='text_fuzzy'),
+            param(Text.text_not_fuzzy('Juhn'), 'textNotFuzzy(Juhn)', id='text_not_fuzzy'),
             param(Text.text_prefix('John'), 'textPrefix(John)', id='text_prefix'),
+            param(Text.text_not_prefix('John'), 'textNotPrefix(John)', id='text_not_prefix'),
             param(Text.text_regex('.*hn.*'), 'textRegex(.*hn.*)', id='text_regex'),
+            param(Text.text_not_regex('.*hn.*'), 'textNotRegex(.*hn.*)', id='text_not_regex'),
         ]
     )
     def test_Text(self, predicate, expected):
