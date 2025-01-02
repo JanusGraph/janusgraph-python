@@ -1,4 +1,4 @@
-# Copyright 2023 JanusGraph-Python Authors
+# Copyright 2024 JanusGraph-Python Authors
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -22,11 +22,12 @@ from pytest import fixture, param, skip, exit
 from testcontainers.core.container import DockerContainer
 from gremlin_python.process.anonymous_traversal import traversal
 from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
-from janusgraph_python.driver.serializer import JanusGraphSONSerializersV3d0
+from janusgraph_python.driver.serializer import JanusGraphSONSerializersV3d0, JanusGraphBinarySerializersV1
 
 current_path = pathlib.Path(__file__).parent.resolve()
 JANUSGRAPH_REPOSITORY = None
 JANUSGRAPH_VERSION_PARAMS = []
+CONTAINER_REGISTRY = {}
 
 # read integration tests config from JSON
 with open(os.path.join(current_path, "config.json")) as f:
@@ -86,6 +87,17 @@ def graph_connection_graphson(request, graph_container):
     # to the graph_container fixture
     container = graph_container(request)
     return graph_connection(request, container, JanusGraphSONSerializersV3d0())
+
+@fixture(scope='session')
+def graph_connection_graphbinary(request, graph_container):
+    """
+    Fixture for creating connection with JanusGraphBinarySerializersV1 serializer
+    to the JanusGraph container
+    """
+    # NOTE: this is a workaround to be able to pass the session fixture param
+    # to the graph_container fixture
+    container = graph_container(request)
+    return graph_connection(request, container, JanusGraphBinarySerializersV1())
 
 def graph_connection(request, graph_container, serializer):
     """
@@ -150,11 +162,17 @@ def graph_container(request):
         tag = passed_request.param
         image = f"{JANUSGRAPH_REPOSITORY}:{tag}"
 
+        # if a container for the same image already exist, let's reuse it
+        if image in CONTAINER_REGISTRY:
+            return CONTAINER_REGISTRY.get(image)
+
         container = (
             DockerContainer(image)
                 .with_name(f'janusgraph_{tag}')
                 .with_exposed_ports(8182)
                 .with_volume_mapping(os.path.join(current_path, 'load_data.groovy'), '/docker-entrypoint-initdb.d/load_data.groovy')
+                # use custom janusgraph.properties that configures inmemory graph and enables string vertex IDs
+                .with_volume_mapping(os.path.join(current_path, 'janusgraph.properties'), '/etc/opt/janusgraph/janusgraph.properties')
                 .start()
         )
         is_server_ready()
@@ -163,6 +181,8 @@ def graph_container(request):
             container.stop()
 
         request.addfinalizer(drop_container)
+
+        CONTAINER_REGISTRY[image] = container
 
         return container
     return create_container
