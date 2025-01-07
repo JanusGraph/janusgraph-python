@@ -16,8 +16,19 @@ from gremlin_python.driver.driver_remote_connection import DriverRemoteConnectio
 from janusgraph_python.driver.serializer import JanusGraphSONSerializersV3d0
 
 connection = DriverRemoteConnection(
-	'ws://localhost:8182/gremlin', 'g',
-	message_serializer=JanusGraphSONSerializersV3d0())
+  'ws://localhost:8182/gremlin', 'g',
+  message_serializer=JanusGraphSONSerializersV3d0())
+```
+
+This can be done like this for GraphBinary:
+
+```python
+from gremlin_python.driver.driver_remote_connection import DriverRemoteConnection
+from janusgraph_python.driver.serializer import JanusGraphBinarySerializersV1
+
+connection = DriverRemoteConnection(
+ 'ws://localhost:8182/gremlin', 'g',
+ message_serializer=JanusGraphBinarySerializersV1())
 ```
 
 Note that the client should be disposed on shut down to release resources and
@@ -76,15 +87,14 @@ version.
 
 ## Serialization Formats
 
-JanusGraph-Python supports GraphSON 3 only. GraphBinary is not yet
-supported.
+JanusGraph-Python supports GraphSON 3 as well as GraphBinary.
 
 Not all of the JanusGraph-specific types are already supported by the formats:
 
 | Format      | RelationIdentifier | Text predicates | Geoshapes | Geo predicates |
 | ----------- | ------------------ | --------------- | --------- | -------------- |
 | GraphSON3   | x                  | x               | -         | -              |
-| GraphBinary | -                  | -               | -         | -              |
+| GraphBinary | x                  | x               | -         | -              |
 
 ## Community
 

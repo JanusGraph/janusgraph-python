@@ -20,23 +20,23 @@ from ..conftest import JANUSGRAPH_VERSION_PARAMS
 
 # parametrize all integration tests to run against various JanusGraph versions
 pytestmark = mark.parametrize(
-   "graph_connection_graphson", JANUSGRAPH_VERSION_PARAMS, indirect=True
+   "graph_connection_graphbinary", JANUSGRAPH_VERSION_PARAMS, indirect=True
 )
 
-class TestGraphSONRelationIdentifierSerializer(_RelationIdentifierSerializer):
+class TestGraphBinaryRelationIdentifierSerializer(_RelationIdentifierSerializer):
     @fixture(autouse=True)
-    def _graph_connection_graphson(self, graph_connection_graphson):
+    def _graph_connection_graphson(self, graph_connection_graphbinary):
         # setting up 'g' variable so parent class's methods can use it
-        self.g = graph_connection_graphson
+        self.g = graph_connection_graphbinary
 
-class TestGraphSONRelationIdentifierDeserializer(_RelationIdentifierDeserializer):
+class TestGraphBinaryRelationIdentifierDeserializer(_RelationIdentifierDeserializer):
     @fixture(autouse=True)
-    def _graph_connection_graphson(self, graph_connection_graphson):
+    def _graph_connection_graphson(self, graph_connection_graphbinary):
         # setting up 'g' variable so parent class's methods can use it
-        self.g = graph_connection_graphson
+        self.g = graph_connection_graphbinary
 
-class TestGraphSONText(_TextTests):
+class TestGraphBinaryText(_TextTests):
     @fixture(autouse=True)
-    def _graph_connection_graphson(self, graph_connection_graphson):
+    def _graph_connection_graphbinary(self, graph_connection_graphbinary):
         # setting up 'g' variable so parent class's methods can use it
-        self.g = graph_connection_graphson
+        self.g = graph_connection_graphbinary
