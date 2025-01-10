@@ -18,7 +18,7 @@ install_requires = read_requirements(requirements_path)
 
 setup(
     name='janusgraphpython',
-    version='1.1.0',
+    version='1.1.1',
     description='JanusGraph-Python extends Apache TinkerPop™''s Gremlin-Python with support for JanusGraph-specific types.',
     long_description=(this_directory/'README.md').read_text(),
     long_description_content_type='text/markdown',
